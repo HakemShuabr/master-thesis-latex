@@ -1176,11 +1176,11 @@ The performance of the model in the NACC cross-center validation was analyzed an
         \hline
         \textbf{Metric} & \textbf{Internal CV} & \textbf{NACC Cross-Center Validation} \\
         \hline
-        AUC & 0.702 & 0.682 \\ \hline
-        G-mean & 0.702 & 0.682 \\ \hline
-        Sensitivity & 0.689 & 0.697 \\ \hline
-        Specificity & 0.714 & 0.666 \\ \hline
-        F1-score & 0.725 & 0.712 \\
+        AUC & 0.702 & 0.670 \\ \hline
+        G-mean & 0.702 & 0.670 \\ \hline
+        Sensitivity & 0.689 & 0.679 \\ \hline
+        Specificity & 0.714 & 0.660 \\ \hline
+        F1-score & 0.725 & 0.706 \\
         \hline
         \multicolumn{3}{p{400pt}}{Sensitivity refers to the recall of the AD class, while Specificity refers to the recall of the non-AD class.}
     \end{tabular}
@@ -1193,11 +1193,11 @@ The performance of the model in the NACC cross-center validation was analyzed an
     \label{fig:ad_nonad_roc}
 \end{figure}
 
-Based on the results of the NACC cross-center validation, a moderate decrease in overall performance was observed. The AUC score decreased by 0.020, dropping from 0.702 in the internal CV to 0.682 in the NACC cross-center validation. A similar decrease of 0.020 was shown by the G-mean. This performance reduction confirms the high difficulty of this classification task due to the overlap in symptoms between different CI subtypes.
+Based on the results of the NACC cross-center validation, a moderate decrease in overall performance was observed. The AUC score decreased by 0.032, dropping from 0.702 in the internal CV to 0.670 in the NACC cross-center validation. A similar decrease was shown by the G-mean. This performance reduction confirms the high difficulty of this classification task due to the overlap in symptoms between different CI subtypes.
 
-However, a positive result was found regarding the sensitivity. The model's ability to correctly identify AD was slightly increased in the unseen NACC data. This resulted in an improvement in the sensitivity score from 0.689 to 0.697 compared to the internal CV. On the other hand, overall performance was affected by a decrease in specificity, which decreased from 0.714 to 0.666. This indicates that the LR model failed to correctly identify non-AD cases in the NACC cross-center validation. Therefore, more subjects who did not have AD were misclassified as AD. The external validation results are reported with extended performance metrics in Table~\ref{table:lr-complete-perf-task5-apdx} in the appendix.
+A slight decrease was observed in both the sensitivity and specificity scores in the unseen NACC data. The sensitivity decreased from 0.689 in the internal CV to 0.679, while the specificity decreased from 0.714 to 0.660. This indicates that the LR model found it more difficult to correctly identify cases in the NACC cross-center validation. The larger reduction in specificity means that more subjects who did not have AD were misclassified as AD. The external validation results are reported with extended performance metrics in Table~\ref{table:lr-complete-perf-task5-apdx} in the appendix.
 
-The selected LR model was calibrated to ensure that the predicted probabilities reflect the actual risk of AD. The calibration results for NACC cross-center validation are shown in Figure~\ref{fig:ad_nonad_calib_curve}. The probabilities of the uncalibrated model were very confident in estimating extreme risk levels (slope = 0.315). However, after beta calibration was applied, the slope improved to 0.918, indicating that the model can now effectively predict AD at different probabilities thresholds. As a result, the model calibration error (ECE) decreased substantially from 0.170 to 0.024, and the Brier score improved from 0.231 to an acceptable level of 0.200. This highlights significant improvements in the overall alignment between the predictions and the actual observed frequencies of AD.
+The selected LR model was calibrated to ensure that the predicted probabilities reflect the actual risk of AD. The calibration results for NACC cross-center validation are shown in Figure~\ref{fig:ad_nonad_calib_curve}. The probabilities of the uncalibrated model were very confident in estimating extreme risk levels (slope = 0.294). However, after beta calibration was applied, the slope improved to 0.859, indicating that the model can now effectively predict AD at different probabilities thresholds. As a result, the model calibration error (ECE) decreased substantially from 0.182 to 0.042, and the Brier score improved from 0.240 to an acceptable level of 0.204, which is close to the acceptable threshold of 0.20. This highlights significant improvements in the overall alignment between the predictions and the actual observed frequencies of AD.
 
 \begin{figure}[ht]
     \centering
