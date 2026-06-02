@@ -1,0 +1,62 @@
+%!TEX ROOT = thesis.tex
+%to not listed in ToC
+\addtocontents{toc}{\protect\setcounter{tocdepth}{-1}}
+
+\chapter{Glossary}
+
+\hspace{4em}%for indentation
+
+\begin{longtable}{|M{3cm}|M{9.5cm}|}
+
+    \caption{Glossary of key terms and concepts used in this study}
+
+    \\ \hline
+    \textbf{Term} & \textbf{Definition}
+    \\ \hline
+    \endfirsthead
+
+    \caption[]{Glossary of key terms and concepts used in this study, continued}
+    \\ \hline
+    \textbf{Term} & \textbf{Definition}
+    \\ \hline                        
+    \endhead
+ 
+    \hline
+    \endfoot
+        Accessible Data & Data that can be easily collected from subjects or their caregivers during a primary care visit at minimal or no cost, such as demographics, medical history, behavioral surveys, and functional assessments. \\ \hline
+        Baseline Visit & The initial data collection point (visit) used as the reference for predicting cognitive status at a future time (e.g., five years later). \\ \hline
+        Benchmark Model & A baseline machine learning model with the best performance out of other models in the hyperparameter optimization process. It is used by the proposed Model Selection Algorithm for comparison to identify the most cost-effective model. \\ \hline
+        Beta Calibration & A method used to align the predicted probabilities of a model with the actual likelihood of the risk, capable of correcting both overconfidence and underestimation. \\ \hline
+        Brier Score & A metric used to evaluate the accuracy of probabilistic predictions, where a lower score indicates better calibration and reliability of the predicted probabilities. \\ \hline
+        Class Imbalance & A condition in datasets where the number of instances in one class (typically normal cognition) significantly exceeds the number of instances in others (e.g., dementia), often leading to biased model predictions. \\ \hline
+        Class Overlap & A challenge in classification where different classes share similar characteristics or feature values, making them difficult to separate in the feature space. \\ \hline
+        Classification Task & The specific modeling objective of identifying a subject's current cognitive status (e.g., Normal Cognition vs. Cognitive Impairment) using data from the same visit. \\ \hline
+        Cognitive Impairment (CI) & A medical condition described as a limitation of the human brain to function normally, limiting the patient's ability to think, remember, pay attention, communicate, solve problems, and make decisions. \\ \hline
+        Cognitive Status & The clinical diagnostic category characterizing a subject's cognitive function, classified in this study as Normal Cognition (NC), Cognitive Impairment but not Dementia (CIND), or Dementia. \\ \hline
+        Cost-effective Model & An accurate and efficient prediction model developed using accessible screening tools and data that avoids expensive equipment, making it suitable for resource-constrained settings. \\ \hline
+        Cost-effective Model Selection Algorithm & A novel algorithm developed in this study that selects the best model by balancing performance metrics with training and prediction throughputs (speed). \\ \hline
+        Counterfactual Examples & Specific, generated hypothetical instances that demonstrate the minimal changes required in a subject's data (e.g., reducing a depression score) to alter the model's prediction from "high risk" to "low risk". \\ \hline
+        Counterfactual Explanations & An XAI method that offers actionable insights by suggesting minimal changes in a patient's data (e.g., lowering a depression score) that would result in a different model prediction. \\ \hline
+        Decision Curve Analysis (DCA) & A method to evaluate the clinical utility of a model by calculating its net benefit across different probability thresholds, comparing it against "treat all" and "treat none" strategies. \\ \hline
+        Dementia & A severe decline in cognitive functions that makes patients rely on others to perform their daily tasks. \\ \hline
+        Expected Calibration Error (ECE) & A summary statistic that measures the difference between the model's predicted probabilities and the actual outcome frequencies; lower values indicate better calibration. \\ \hline
+        Explainability & The capability of a machine learning model to provide transparent and human-understandable insights into its decision-making process, ensuring that predictions are trustworthy and can be translated into actionable clinical recommendations. \\ \hline
+        Explainable Artificial Intelligence (XAI) & An interpretable approach integrated into machine learning models to describe how they make predictions and which input features drive the outcome. \\ \hline
+        External Validation & The process of testing a machine learning model on an independent dataset collected from a different population or setting than the training data to assess its generalizability. \\ \hline
+        Feature Overlap & A type of class overlap where the distribution of values for individual features is similar across different classes, resulting in low discriminative power. \\ \hline
+        Generalizability & The extent to which the research findings can be applied to settings, situations, or groups other than those that were originally studied. \\ \hline
+        Hierarchical Classification Strategy & A strategy that decomposes a complex classification problem into smaller binary tasks (e.g., Normal vs. Impaired, then Mild Impaired vs. Dementia) to improve performance and clinical utility. \\ \hline
+        Hybrid Data Resampling & A data preprocessing approach utilized in this study that combines cleaning-based methods (like ENN) and oversampling methods (like BorderlineSMOTE) to handle class imbalance and overlap. \\ \hline
+        Instance-Level Overlap & A type of class overlap occurring when individual data points from different classes are located in close proximity or mixed within the feature space (e.g., borderline points). \\ \hline
+        Internal Validation & Evaluating a model's performance using a subset of the same dataset used for training (e.g., k-fold cross-validation). \\ \hline
+        Interpretability & The extent to which a human can understand the reasoning behind a model's decision; often used interchangeably with explainability to describe the transparency of "white-box" or explained models. \\ \hline
+        NACC Cross-center Validation & A specific external validation strategy where models trained on data from one set of research centers are tested on unseen data from different centers within the NACC dataset to assess generalizability. \\ \hline
+        Prediction Task & The modeling objective of forecasting a subject's future cognitive status over a specified period (e.g., 5 years) using data from the baseline visit. \\ \hline
+        Prediction Throughput & The total number of predictions a model can make per second, used as a measure of model efficiency. \\ \hline
+        Structural Overlap & A type of class overlap related to the geometric complexity of the decision boundary between classes. \\ \hline
+        Subjects & The individuals (participants) included in the study cohorts (NACC and ADNI) whose data are used for training and validating the models. \\ \hline
+        Training Throughput & The total number of samples a model can learn per second, used as a measure of model efficiency. \\ \hline
+        Treat All & A baseline strategy in Decision Curve Analysis assuming all subjects are predicted to have the condition (e.g., Cognitive Impairment). \\ \hline
+        Treat None & A baseline strategy in Decision Curve Analysis assuming none of the subjects are predicted to have the condition. \\ \hline
+   
+\end{longtable}

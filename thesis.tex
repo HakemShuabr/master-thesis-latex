@@ -1,0 +1,121 @@
+\documentclass{mmuthesis}
+%\newsubfloat{figure}
+
+\usepackage{lipsum}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{caption} % needed to support multiple subfigure floating in multiple pages. Used in the appendix
+\usepackage{pdflscape}
+\usepackage{longtable}
+\usepackage{adjustbox}
+\usepackage{lscape}
+\usepackage{enumitem}
+
+\usepackage{soul}
+\sethlcolor{yellow}
+%To remove spacing before itemize starts
+%the 'leftmargin=2cm' option is to match the itemize indentation in MS Word
+%can be removed/edit accordingly
+\setlist[itemize]{topsep=-1cm,leftmargin=2cm}
+
+% Packages added by myself
+\usepackage{multirow}
+\usepackage{longtable}
+
+%To fix cell size and alignment at the same time
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{M}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+%for tab item in table
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+
+
+\usepackage[x11names,dvipsnames,svgnames]{xcolor}
+\usepackage[os=win]{menukeys}
+\usepackage{listings}
+\lstset{language=[LaTeX]TeX,columns=fullflexible,
+basicstyle=\ttfamily,texcsstyle=*\bfseries\color{NavyBlue},
+commentstyle=\itshape\color{PaleVioletRed4},
+frame=single,framesep=6pt,
+framexleftmargin=6pt,framexrightmargin=6pt,
+xleftmargin=12pt,xrightmargin=12pt,
+breaklines=true,breakatwhitespace=true}
+
+
+\author{Shubar, Abduelhakem G Abdusalam}
+\title{Cost-effective Machine Learning Models for the Early Prediction of Cognitive Impairment Using Accessible Data}
+\submissionyear{2026}
+\submissionmonth{January}
+\faculty{Faculty of Computing \& Informatics}
+\degree{Master~of~Science (Information~Technology)}
+\qualification{Bachelor of Computer Science (Honours), Multimedia University, Malaysia}
+
+% load acronym definitions from a separate file
+\loadglsentries{acronyms}
+
+% Command to fix sorting in bibliography
+\newcommand{\twenty}[1]{}
+
+\begin{document}
+
+\clearpage
+\frontmatter
+\makecoverandtitlepage
+\copyrightpage
+\declarationpage
+
+\acknowledgements{\hspace{3em}First and foremost, praise is given to Allah Subhanahu wa ta'ala for His endless blessings throughout my journey. Without His mercy and strength, this work would not have been possible.
+
+I would like to express my deepest gratitude to my beloved wife, Maha. Her patience, understanding, and support were the foundation of this success. During this demanding period, the heavy responsibility of managing our home and family was carried by her with grace, allowing me the time and focus needed to complete this research. Her sacrifice and belief in me were critical to this achievement. Special love is sent to my little son, Muhammad, whose smile and joy gave me strength during the most challenging times.
+
+My deepest thanks go to my dear father and mother for their constant love, prayers, and sacrifices that have supported me in every step of my life. I am also grateful to my brothers and sister for their encouragement and care. This research was conducted during years abroad, far away from my family. Although the distance was great, their emotional support was felt deeply, and it provided me with the motivation to keep going.
+
+I would also like to express my sincere appreciation to my supervisor, Prof. Kannan Ramakrishnan, for his guidance and support during my research journey and the preparation of this thesis. My gratitude also goes to Dr. Amy Lim Hui Lan for her support and for the encouragement given to me to submit this thesis. I am also thankful to my co-supervisor, Prof. Chin Kuan Ho, and the committee members of the Institute of Postgraduate Studies for their valuable guidance that helped improve this work.
+
+Appreciation is also extended to my managers and colleagues at Experian Malaysia. The balance between full-time employment and academic research was a challenge, but it was made easier by their understanding and flexibility. I am grateful for the professional environment that allowed me to pursue my academic goals alongside my career.
+
+Lastly, this work is dedicated to the memory of my grandmother, whose life and struggle with Alzheimer’s disease deeply inspired me to pursue this project. Her strength, warmth, and enduring spirit continue to guide me even after her passing. This thesis stands as a humble tribute to her memory and to all those who face the challenges of dementia with courage and grace.}
+
+\abstractfromfile{abstract}
+
+{\clearpage\SingleSpacing
+\tableofcontents\clearpage
+\listoftables\clearpage
+\listoffigures\clearpage
+% {\printglossary[title={LIST OF ABBREVIATIONS/SYMBOLS}]}\clearpage
+\listofapdx\clearpage}
+
+
+\mainmatter
+
+\include{chap1} % introduction
+\include{chap2} % Literature Review
+\include{chap3} % Methodology
+\include{chap4} % Results and Analysis
+\include{chap5} % Discussion
+\include{chap6} % Conclusion
+
+\bibliography{references}
+\addtocontents{toc}{\protect\vspace{-4pt}}
+
+\begin{appendices}
+\renewcommand\appendixtocname{APPENDICES}
+\appendixpage
+\appendix
+\include{apdx1}
+% \include{glossary}
+\end{appendices}
+resume the ToC depth
+\addtocontents{toc}{\protect\setcounter{tocdepth}{3}}
+\addtocontents{toc}{\protect\vspace{16pt}}
+
+
+\backmatter
+\ownpubs
+\nocitejour{Shubar2024Optimizing}
+\bibliographyjour{references}
+\bibliographyconf{references}
+
+\end{document}
