@@ -123,10 +123,10 @@ Based on these complexity measures, the ENN + \acrshort{KMeansSMOTE} hybrid resa
     \hline
         Method & G-mean & Recall (NC) & Recall (CI) & kDN & N1 \\  \hline
         Baseline & 0.829 & 0.860 & 0.799 & 0.209 & 0.294 \\ \hline
-        ROS & 0.831 & 0.885 & 0.781 & 0.213 & 0.293 \\ \hline
-        RUS & 0.831 & 0.\textbf{892} & 0.773 & 0.158 & 0.259 \\ \hline
-        SMOTE & 0.831 & 0.881 & 0.785 & 0.207 & 0.280 \\ \hline
-        \textbf{ENN + KMeansSMOTE} & \textbf{0.832} & 0.862 & \textbf{0.804} & \textbf{0.005} & \textbf{0.059} \\ \hline
+        ROS & \makecell{0.831 \\ \hl{{\small (p = 0.010)}}} & 0.885 & 0.781 & 0.213 & 0.293 \\ \hline
+        RUS & \makecell{0.831 \\ \hl{{\small (p = 0.057)}}} & 0.\textbf{892} & 0.773 & 0.158 & 0.259 \\ \hline
+        SMOTE & \makecell{0.831 \\ \hl{{\small (p = 0.004)}}} & 0.881 & 0.785 & 0.207 & 0.280 \\ \hline
+        \textbf{ENN + KMeansSMOTE} & \makecell{\textbf{0.832} \\ \hl{{\small (p = 0.026)}}} & 0.862 & \textbf{0.804} & \textbf{0.005} & \textbf{0.059} \\ \hline
     \end{tabular}
     \label{table:nc_ci_resampling}
 \end{table}
@@ -140,7 +140,7 @@ Based on these complexity measures, the ENN + \acrshort{KMeansSMOTE} hybrid resa
 
 The results show that the baseline model was most affected in its ability to correctly identify the CI class. The baseline RF model achieved a CI recall of only 0.799, although CI is the majority class. The standard resampling methods showed only marginal improvements. Random Oversampling (\acrshort{ROS}) and the Synthetic Minority Over-sampling Technique (\acrshort{SMOTE})  performed similarly. Both methods failed to reduce the high class overlap (N1 of 0.293 and 0.280, respectively) and showed no significant improvement in the CI class recall. Random Undersampling (\acrshort{RUS}) provided a slight reduction in overlap but achieved a G-mean of 0.831 by increasing the recall of the NC class to 0.892 while reducing the recall of the CI class to 0.773.
 
-In contrast, the highest balanced performance (G-mean = 0.832) was achieved using the selected ENN + KMeansSMOTE method. This improvement can be explained by the significant reduction in the class overlap at the instance-level (kDN) to 0.005 and the structural class overlap (N1) to 0.059.  As a result, the recall for the impacted CI class improved to 0.804 while maintaining a high recall for the NC class. This confirms the effectiveness of the specialized, overlap-aware strategy.
+In contrast, the highest balanced performance (G-mean = 0.832) was achieved using the selected ENN + KMeansSMOTE method. This improvement can be explained by the significant reduction in the class overlap at the instance-level (kDN) to 0.005 and the structural class overlap (N1) to 0.059.  As a result, the recall for the impacted CI class improved to 0.804 while maintaining a high recall for the NC class. \hl{The G-mean improvement of the proposed ENN + KMeansSMOTE method over the baseline was statistically significant (p = 0.026), which confirms that the gain did not occur by random chance.} This confirms the effectiveness of the specialized, overlap-aware strategy.
 
 \subsubsection{Data Resampling Results for the CIND vs. Dementia Classification Task}
 \label{sec:resampling_cind_dem}
@@ -277,7 +277,7 @@ The performance of the LR model in internal and external validations for the NC 
             \hline
             \textbf{Metric} & \textbf{Internal CV} & \textbf{NACC Cross-center Validation} & \textbf{ADNI External Validation} \\
             \hline
-            AUC & 0.844 & 0.810 & 0.825 \\ \hline
+            AUC & \makecell{0.844 \\ \hl{{\small (0.843--0.846)}}} & \makecell{0.810 \\ \hl{{\small (0.802--0.818)}}} & \makecell{0.825 \\ \hl{{\small (0.807--0.842)}}} \\ \hline
             G-mean & 0.842 & 0.809 & 0.820 \\ \hline
             Sensitivity & 0.785 & 0.777 & 0.739 \\ \hline
             Specificity & 0.903 & 0.843 & 0.911 \\ \hline
@@ -296,7 +296,7 @@ The performance of the LR model in internal and external validations for the NC 
 
 Based on the results of testing the LR model with the NACC cross-center validation dataset, a moderate decrease in overall performance was noticed. A drop of 0.034 in the area under the curve (\acrshort{AUC}) score was recorded, which decreased from 0.844 in the internal cross-validation (CV) to 0.810 in the NACC cross-center validation. A similar decrease was noticed in the G-mean. This performance reduction is due to the major drop in NC recall (specificity) from 0.903 to 0.843, although CI recall (sensitivity) had a minor decrease. The LR struggled to accurately classify NC in the NACC cross-center test data, compared to the internal CV and the ADNI data. 
 
-Regarding generalizability to the independent ADNI dataset, the LR model achieved high performance, with an AUC score of 0.825. This score is slightly higher than the score of 0.810 in the NACC cross-center validation. The ROC curves in Figure~\ref{figure:nc_ci_roc} demonstrate the performance of the LR in different validations. A notable trade-off between sensitivity and specificity was observed in the ADNI results. Despite a high specificity (0.911), the model's sensitivity score dropped to 0.739, which is a significantly lower score than the score obtained in the NACC cross-center validation. This is likely due to differences in characteristics between the observational NACC study and the ADNI clinical trial. Although high overall accuracy was maintained (as shown by an F1-score of 0.833), the low sensitivity indicates that the LR model is not accurate in classifying CI cases compared to NC cases when used on the ADNI external data. The external validation results are reported with extended performance metrics in Table~\ref{table:lr-complete-perf-task1-apdx} in the appendix.
+Regarding generalizability to the independent ADNI dataset, the LR model achieved high performance, with an AUC score of 0.825. This score is slightly higher than the score of 0.810 in the NACC cross-center validation. The ROC curves in Figure~\ref{figure:nc_ci_roc} demonstrate the performance of the LR in different validations. A notable trade-off between sensitivity and specificity was observed in the ADNI results. Despite a high specificity (0.911), the model's sensitivity score dropped to 0.739, which is a significantly lower score than the score obtained in the NACC cross-center validation. This is likely due to differences in characteristics between the observational NACC study and the ADNI clinical trial. Although high overall accuracy was maintained (as shown by an F1-score of 0.833), the low sensitivity indicates that the LR model is not accurate in classifying CI cases compared to NC cases when used on the ADNI external data. \hl{The reduction in AUC from the internal CV was statistically significant for both the NACC (p < 0.001) and ADNI (p < 0.001) validations; however, because the CV fold scores were closely clustered, even these small drops were detected as significant.} The external validation results are reported with extended performance metrics in Table~\ref{table:lr-complete-perf-task1-apdx} in the appendix.
 
 The prediction of the LR model was calibrated to ensure that it generates probabilities that reflect the actual risk of CI. The results of the model calibration in the two external validation datasets are presented in Figure~\ref{fig:nc_ci_calib_curve}. In the NACC cross-center validation, the uncalibrated LR model tended to overestimate the risk of CI in most probability thresholds (intercept = -0.235). In addition, a slope of 0.191 indicates that the model produced extreme estimations close to 0 and 1. After beta calibration was applied, the model's prediction improved across all probability levels. In general, the Expected Calibration Error (\acrshort{ECE}) decreased significantly from 0.151 to 0.027, and the Brier score improved from 0.168 to 0.136. This indicates that the model's predicted probabilities of CI became closer to the true outcome rates. A different result was observed in the ADNI external validation. In this test, the model underestimated the risk of CI even after applying the beta calibration, which reduced the calibration error from 0.176 to 0.107.
 
@@ -333,7 +333,7 @@ The selected LR model for the CIND vs. dementia classification task was also eva
             \hline
             \textbf{Metric} & \textbf{Internal CV} & \textbf{NACC Cross-center Validation} & \textbf{ADNI External Validation} \\
             \hline
-            AUC & 0.828 & 0.828 & 0.841 \\ \hline
+            AUC & \makecell{0.828 \\ \hl{{\small (0.821--0.835)}}} & \makecell{0.828 \\ \hl{{\small (0.819--0.837)}}} & \makecell{0.841 \\ \hl{{\small (0.822--0.861)}}} \\ \hline
             G-mean & 0.828 & 0.826 & 0.840 \\ \hline
             Sensitivity & 0.827 & 0.874 & 0.888 \\ \hline
             Specificity & 0.830 & 0.782 & 0.794 \\ \hline
@@ -352,7 +352,7 @@ The selected LR model for the CIND vs. dementia classification task was also eva
 
 The performance of the LR model on the unseen NACC data was observed to achieve the same AUC as the internal CV and a slight decrease in the G-mean score from 0.828 to 0.826. Additionally, the sensitivity on the NACC cross-center validation increased to 0.874, while the specificity decreased to 0.782. These results indicate that the model correctly classified a high proportion of dementia cases but with a higher false positive rate, which decreased the CIND recall.
 
-The results of the ADNI external validation confirmed that the model is generalizable to different clinical settings. A high AUC of 0.841 was achieved, which exceeded the results of the internal CV and the NACC cross-center validation. This robustness is clearly shown in Figure~\ref{figure:cind_dementia_roc}, where the ADNI curve closely follows or exceeds the other ROC curves. This is a result of a high sensitivity of 0.888, which indicates that the model is highly effective in detecting dementia even in unseen external data. The LR model produced higher precision in classifying both classes (CIND and dementia) in the ADNI external validation compared to the NACC cross-center validation, which can be observed by the G-mean score of 0.840. Table~\ref{table:lr-complete-perf-task2-apdx} in the appendix provides extended performance metrics of the external validation results.
+The results of the ADNI external validation confirmed that the model is generalizable to different clinical settings. A high AUC of 0.841 was achieved, which exceeded the results of the internal CV and the NACC cross-center validation. This robustness is clearly shown in Figure~\ref{figure:cind_dementia_roc}, where the ADNI curve closely follows or exceeds the other ROC curves. This is a result of a high sensitivity of 0.888, which indicates that the model is highly effective in detecting dementia even in unseen external data. The LR model produced higher precision in classifying both classes (CIND and dementia) in the ADNI external validation compared to the NACC cross-center validation, which can be observed by the G-mean score of 0.840. \hl{The AUC difference between the internal CV and the NACC validation was not statistically significant (p = 0.912), which supports the close agreement between them, while the higher ADNI AUC was found to be significant (p = 0.038).} Table~\ref{table:lr-complete-perf-task2-apdx} in the appendix provides extended performance metrics of the external validation results.
 
 To ensure that the LR model generates probabilities that accurately reflect the actual risk of dementia, model calibration was performed. The results for both validation datasets are illustrated in Figure~\ref{fig:cind_dementia_calib_curve}. In the NACC cross-center validation, the uncalibrated model already demonstrated strong alignment with the true outcomes. The slope was very close to 1, but the model overestimated the risk of dementia (intercept = -0.461). No improvement was observed after beta calibration because the initial model was already well-calibrated, with an ECE of 0.057 and a Brier score of 0.125.
 
@@ -629,10 +629,10 @@ To handle this high data complexity, the ENN + \acrshort{BorderlineSMOTE} strate
     \hline
         Method & G-mean & Recall (NC) & Recall (CI) & kDN & N1 \\ \hline
         Baseline & 0.749 & \textbf{0.870} & 0.644 & 0.274 & 0.389 \\ \hline
-        ROS & 0.749 & 0.853 & 0.658 & 0.272 & 0.385 \\ \hline
-        RUS & 0.752 & 0.845 & 0.669 & 0.229 & 0.365 \\ \hline
-        SMOTE & 0.751 & 0.860 & 0.656 & 0.267 & 0.446 \\ \hline
-        \textbf{ENN + BorderlineSMOTE} & \textbf{0.752} & 0.812 & \textbf{0.697} & \textbf{0.018} & \textbf{0.158} \\ \hline
+        ROS & \makecell{0.749 \\ \hl{{\small (p = 0.972)}}} & 0.853 & 0.658 & 0.272 & 0.385 \\ \hline
+        RUS & \makecell{0.752 \\ \hl{{\small (p = 0.175)}}} & 0.845 & 0.669 & 0.229 & 0.365 \\ \hline
+        SMOTE & \makecell{0.751 \\ \hl{{\small (p = 0.135)}}} & 0.860 & 0.656 & 0.267 & 0.446 \\ \hline
+        \textbf{ENN + BorderlineSMOTE} & \makecell{\textbf{0.752} \\ \hl{{\small (p = 0.343)}}} & 0.812 & \textbf{0.697} & \textbf{0.018} & \textbf{0.158} \\ \hline
     \end{tabular}
     \label{table:future_nc_ci_resampling}
 \end{table}
@@ -646,7 +646,7 @@ To handle this high data complexity, the ENN + \acrshort{BorderlineSMOTE} strate
 
 The baseline performance, as shown in Table~\ref{table:future_nc_ci_resampling}, was heavily affected by the data complexity. The model struggled to identify the minority CI class, resulting in a low recall of 0.644. Standard methods like ROS and SMOTE did not result in any significant improvement. A key observation is that SMOTE worsened structural class overlap (N1 increased to 0.446) and provided no noticeable improvement to G-mean or recall.
 
-The selected ENN + BorderlineSMOTE method achieved the highest balanced performance with a G-mean of 0.752. The reduction in class overlap might have allowed the RF model to learn a better decision boundary, which is reflected in the significant increase in the minority CI class recall from 0.644 to 0.697, while the NC class recall decreased from 0.870 to 0.812.
+The selected ENN + BorderlineSMOTE method achieved the highest balanced performance with a G-mean of 0.752. The reduction in class overlap might have allowed the RF model to learn a better decision boundary, which is reflected in the significant increase in the minority CI class recall from 0.644 to 0.697, while the NC class recall decreased from 0.870 to 0.812. \hl{The G-mean improvement of the proposed ENN + BorderlineSMOTE method over the baseline was not statistically significant (p = 0.343). This is expected, since the main benefit of the method is the reduction of class overlap rather than a direct gain in G-mean, which confirms that the synthetic data did not artificially inflate the performance.}
 
 \subsubsection{Data Resampling Results for the Future CIND vs. Dementia Prediction Task}
 \label{sec:resampling_future_cind_dem}
@@ -661,10 +661,10 @@ Based on this high complexity, the ENN + KMeansSMOTE method was selected by the 
     \hline
         Method & G-mean & Recall (Dementia) & Recall (CIND) & kDN & N1 \\ \hline
         Baseline & 0.711 & 0.770 & 0.656 & 0.260 & 0.485 \\ \hline
-        ROS & 0.715 & 0.754 & 0.678 & 0.244 & 0.469 \\ \hline
-        RUS & 0.726 & 0.723 & \textbf{0.728} & 0.250 & 0.470 \\ \hline
-        SMOTE & 0.715 & 0.758 & 0.675 & 0.238 & 0.432 \\ \hline
-        \textbf{ENN + KMeansSMOTE} & \textbf{0.730} & \textbf{0.776} & 0.688 & \textbf{0.034} & \textbf{0.161} \\ \hline
+        ROS & \makecell{0.715 \\ \hl{{\small (p = 0.101)}}} & 0.754 & 0.678 & 0.244 & 0.469 \\ \hline
+        RUS & \makecell{0.726 \\ \hl{{\small (p = 0.014)}}} & 0.723 & \textbf{0.728} & 0.250 & 0.470 \\ \hline
+        SMOTE & \makecell{0.715 \\ \hl{{\small (p = 0.314)}}} & 0.758 & 0.675 & 0.238 & 0.432 \\ \hline
+        \textbf{ENN + KMeansSMOTE} & \makecell{\textbf{0.730} \\ \hl{{\small (p = 0.022)}}} & \textbf{0.776} & 0.688 & \textbf{0.034} & \textbf{0.161} \\ \hline
     \end{tabular}
     \label{table:future_cind_dem_resampling}
 \end{table}
@@ -678,7 +678,7 @@ Based on this high complexity, the ENN + KMeansSMOTE method was selected by the 
 
 The baseline model experienced classification complexity due to the high class overlap in this task. As a result, the model had a low G-mean of 0.711 and a poor recall for the minority CIND class (0.656). The RUS method reduced the density of the majority class, which slightly lowered the class overlap. This allowed the RF model to achieve the highest recall of the minority CIND class (0.728) and to improve the baseline G-mean to 0.726. However, it removed informative patterns of the dementia class, resulting in the most significant drop in dementia recall from 0.770 to 0.723. This outcome might not be acceptable, as misclassifying dementia cases could have a higher risk and cost. A similar outcome was observed in the ROS and SMOTE methods, with both methods slightly improving the baseline G-mean to 0.715.
 
-The ENN + KMeansSMOTE method increased the G-mean to 0.730. This method was the only one that improved the recall for both classes simultaneously. This high performance is explained by the significant reduction in data complexity. By cleaning the data, the method improved the model's recall on the difficult minority CIND class from 0.656 to 0.688 while also slightly improving the recall on the dementia class.
+The ENN + KMeansSMOTE method increased the G-mean to 0.730. This method was the only one that improved the recall for both classes simultaneously. \hl{This G-mean improvement over the baseline was statistically significant (p = 0.022), which supports the reliability of the proposed overlap-aware strategy.} This high performance is explained by the significant reduction in data complexity. By cleaning the data, the method improved the model's recall on the difficult minority CIND class from 0.656 to 0.688 while also slightly improving the recall on the dementia class.
 
 In conclusion, the baseline model suffered from high class overlap in both future prediction tasks. The overlap-guided resampling methodology produced highly effective results. It successfully identified and applied hybrid techniques that reduced the data complexity and improved the model's ability to classify both classes more accurately. These results move the outcomes of this study closer to achieving the research objectives and improve the training data quality for better modeling results, which are highlighted in the next subsections.
 
@@ -808,7 +808,7 @@ The performance of the LR model to predict the future risk of CI was analyzed ac
             \hline
             \textbf{Metric} & \textbf{Internal CV} & \textbf{NACC Cross-center Validation} & \textbf{ADNI External Validation} \\
             \hline
-            AUC & 0.772 & 0.790 & 0.778 \\ \hline
+            AUC & \makecell{0.772 \\ \hl{{\small (0.769--0.776)}}} & \makecell{0.790 \\ \hl{{\small (0.774--0.806)}}} & \makecell{0.778 \\ \hl{{\small (0.750--0.803)}}} \\ \hline
             G-mean & 0.770 & 0.787 & 0.777 \\ \hline
             Sensitivity & 0.723 & 0.721 & 0.745 \\ \hline
             Specificity & 0.820 & 0.859 & 0.810 \\ \hline
@@ -827,7 +827,7 @@ The performance of the LR model to predict the future risk of CI was analyzed ac
 
 The results of the NACC cross-center validation showed an improvement in performance compared to the internal CV. Unlike the results of the current cognitive status classification task (section \ref{sec:classification_external_validation}), the AUC score increased from 0.772 to 0.790, and the G-mean improved from 0.770 to 0.787. This improvement is attributed to the significant increase in NC recall (specificity) from 0.820 to 0.859, while the CI recall had a very minimal decrease. These findings suggest that the model was exceptionally well generalized to the unseen NACC data collected in different research centers.
 
-The model also demonstrated high performance when applied to the ADNI dataset. The AUC score of 0.778 is very close to the internal CV score and only slightly lower than the NACC cross-center validation score. This can be observed in Figure~\ref{fig:future_nc_ci_roc} as the ADNI external validation's ROC curve is close to the other curves. Importantly, the sensitivity was 0.745 in the ADNI external validation, which outperformed the sensitivity of the other two validations. This indicates that the model is reliable in identifying cases at risk of future CI in a different clinical population. However, the model scored the lowest NC recall of 0.810 in the ADNI external validation. Table~\ref{table:lr-complete-perf-task3-apdx} in the appendix provides extended performance metrics of the external validation results.
+The model also demonstrated high performance when applied to the ADNI dataset. The AUC score of 0.778 is very close to the internal CV score and only slightly lower than the NACC cross-center validation score. This can be observed in Figure~\ref{fig:future_nc_ci_roc} as the ADNI external validation's ROC curve is close to the other curves. Importantly, the sensitivity was 0.745 in the ADNI external validation, which outperformed the sensitivity of the other two validations. This indicates that the model is reliable in identifying cases at risk of future CI in a different clinical population. However, the model scored the lowest NC recall of 0.810 in the ADNI external validation. \hl{Both external AUC scores differed significantly from the internal CV (NACC p < 0.001, ADNI p = 0.036), although the differences were small and within an acceptable range for generalization.} Table~\ref{table:lr-complete-perf-task3-apdx} in the appendix provides extended performance metrics of the external validation results.
 
 Calibration of the LR model was also performed to produce a reliable estimate of future CI risk. Figure~\ref{fig:future_nc_ci_calib_curve} demonstrates the calibration curves for both validation datasets. In the NACC cross-center validation, the uncalibrated model overestimated the risk at most of the interval and generated extreme probabilities close to 0 and 1. After beta calibration was applied, the distribution of the predicted probabilities was corrected with excellent intercept and slope. As a result, the ECE was significantly reduced from 0.108 to 0.023, and the Brier score improved from 0.164 to 0.148. This indicates excellent calibration and accuracy of the model's prediction.
 
@@ -864,7 +864,7 @@ The selected LR model for the future CIND vs. dementia prediction task was evalu
             \hline
             \textbf{Metric} & \textbf{Internal CV} & \textbf{NACC Cross-center Validation} & \textbf{ADNI External Validation} \\
             \hline
-            AUC & 0.759 & 0.805 & 0.780 \\ \hline
+            AUC & \makecell{0.759 \\ \hl{{\small (0.751--0.768)}}} & \makecell{0.805 \\ \hl{{\small (0.784--0.828)}}} & \makecell{0.780 \\ \hl{{\small (0.740--0.819)}}} \\ \hline
             G-mean & 0.757 & 0.803 & 0.780 \\ \hline
             Sensitivity & 0.714 & 0.746 & 0.787 \\ \hline
             Specificity & 0.804 & 0.864 & 0.773 \\ \hline
@@ -885,7 +885,7 @@ The LR model had a significant improvement in performance in the NACC cross-cent
 
 The high generalizability of the LR model was also observed in the external validation on the ADNI dataset. The AUC score of 0.780 was higher than the internal CV baseline. This shows that the model can provide high classification performance even in a new clinical setting. A critical finding was noticed, which is the increase in sensitivity to 0.787. This is the highest sensitivity score across all three validation stages, indicating that the model is even more effective in correctly predicting future dementia risk in the ADNI cohort. 
 
-In exchange for the increase in sensitivity, the LR model's specificity and F1-score dropped to 0.773 and 0.715, respectively. This drop in F1-score is largely driven by a significant reduction in precision (from 0.887 in the NACC cross-center validation to 0.655 in the ADNI external validation). This means that the model had a higher rate of false positives relative to true positives. Although a high number of false positives should be avoided, this result is in alignment with the clinical goal of a screening tool. In the context of predicting severe cognitive decline, it is safer for more patients to be flagged for further evaluation than missing actual cases of future dementia. Therefore, the model's ability to prioritize sensitivity on the external data supports its utility for early cognitive impairment prediction in real clinical practice. The external validation results are reported with extended performance metrics in Table~\ref{table:lr-complete-perf-task4-apdx} in the appendix.
+In exchange for the increase in sensitivity, the LR model's specificity and F1-score dropped to 0.773 and 0.715, respectively. This drop in F1-score is largely driven by a significant reduction in precision (from 0.887 in the NACC cross-center validation to 0.655 in the ADNI external validation). This means that the model had a higher rate of false positives relative to true positives. Although a high number of false positives should be avoided, this result is in alignment with the clinical goal of a screening tool. In the context of predicting severe cognitive decline, it is safer for more patients to be flagged for further evaluation than missing actual cases of future dementia. Therefore, the model's ability to prioritize sensitivity on the external data supports its utility for early cognitive impairment prediction in real clinical practice. \hl{The improvement in AUC over the internal CV reached statistical significance in both validations (NACC p < 0.001, ADNI p = 0.016), which reflects the consistent gain observed in the external datasets.} The external validation results are reported with extended performance metrics in Table~\ref{table:lr-complete-perf-task4-apdx} in the appendix.
 
 The selected LR model was calibrated to improve its estimation of future dementia risk. The calibration results for the external validation in the NACC and the ADNI datasets are shown in Figure~\ref{fig:future_cind_dementia_calib_curve}. In the NACC cross-center validation, the uncalibrated model assigned underestimated probabilities to subjects with moderate and low risk of dementia, while extreme probabilities were assigned to subjects with high risk. Using beta calibration, the spread of the probabilities was corrected (slope = 1.264), and the underestimation bias was reduced, especially in moderate risk thresholds (intercept = 0.111). As a result, the model calibration error (ECE) improved from 0.103 to 0.074, and the Brier score decreased from 0.149 to 0.139. Although the model's prediction improved, the model was still slightly miscalibrated as compared to the calibrated model in the future NC vs. CI prediction task.
 
@@ -1096,10 +1096,10 @@ As shown in Table~\ref{table:ad_nonad_resampling}, the severe overlap in the bas
     \hline
         Method & G-mean & Recall (AD) & Recall (non-AD) & kDN & N1 \\ \hline
         Baseline & 0.668 & 0.714 & 0.626 & 0.323 & 0.511 \\ \hline
-        ROS & 0.673 & 0.666 & 0.681 & 0.317 & 0.503 \\ \hline
-        RUS & 0.674 & 0.639 & \textbf{0.712} & 0.306 & 0.522 \\ \hline
-        SMOTE & 0.674 & 0.677 & 0.671 & 0.315 & 0.491 \\ \hline
-        \textbf{ENN + KMeansSMOTE} & \textbf{0.710} & \textbf{0.729} & 0.692 & \textbf{0.021} & \textbf{0.125} \\ \hline
+        ROS & \makecell{0.673 \\ \hl{{\small (p = 0.125)}}} & 0.666 & 0.681 & 0.317 & 0.503 \\ \hline
+        RUS & \makecell{0.674 \\ \hl{{\small (p = 0.157)}}} & 0.639 & \textbf{0.712} & 0.306 & 0.522 \\ \hline
+        SMOTE & \makecell{0.674 \\ \hl{{\small (p = 0.011)}}} & 0.677 & 0.671 & 0.315 & 0.491 \\ \hline
+        \textbf{ENN + KMeansSMOTE} & \makecell{\textbf{0.710} \\ \hl{{\small (p = 0.001)}}} & \textbf{0.729} & 0.692 & \textbf{0.021} & \textbf{0.125} \\ \hline
     \end{tabular}
     \label{table:ad_nonad_resampling}
 \end{table}
@@ -1111,7 +1111,7 @@ As shown in Table~\ref{table:ad_nonad_resampling}, the severe overlap in the bas
 \label{figure:ad_nonad_resampling_perf}
 \end{figure}
 
-In contrast, the selected ENN + KMeansSMOTE method produced the most effective and balanced RF model. It was the only method that successfully addressed the data complexity by totally reducing both instance-level and structural class overlap. As a result, this method achieved the highest G-mean of 0.710. This is more than 4 percentage points of improvement from the baseline model. It did this by significantly improving the recall of the minority non-AD class to 0.692 while achieving the highest recall for the AD class at 0.729. This confirms that for this highly complex task, a specialized strategy that first cleans the overlap and then systematically resamples the minority class is necessary to achieve a balanced and effective classification model.
+In contrast, the selected ENN + KMeansSMOTE method produced the most effective and balanced RF model. It was the only method that successfully addressed the data complexity by totally reducing both instance-level and structural class overlap. As a result, this method achieved the highest G-mean of 0.710. This is more than 4 percentage points of improvement from the baseline model. It did this by significantly improving the recall of the minority non-AD class to 0.692 while achieving the highest recall for the AD class at 0.729. This confirms that for this highly complex task, a specialized strategy that first cleans the overlap and then systematically resamples the minority class is necessary to achieve a balanced and effective classification model. \hl{The G-mean improvement of the proposed ENN + KMeansSMOTE method over the baseline was highly significant (p = 0.001) and was the strongest result among all the evaluated methods, which confirms the effectiveness of the proposed strategy in this complex task.}
 
 \subsection{Model Fine-tuning and Selection Results}
 The final model fine-tuning and selection process was also applied to the CI subtype classification task. The results of optimizing and selecting the best model that distinguishes between AD and non-AD disorders are outlined in this section.
@@ -1176,7 +1176,7 @@ The performance of the model in the NACC cross-center validation was analyzed an
         \hline
         \textbf{Metric} & \textbf{Internal CV} & \textbf{NACC Cross-Center Validation} \\
         \hline
-        AUC & 0.702 & 0.670 \\ \hline
+        AUC & \makecell{0.702 \\ \hl{{\small (0.698--0.706)}}} & \makecell{0.670 \\ \hl{{\small (0.658--0.681)}}} \\ \hline
         G-mean & 0.702 & 0.670 \\ \hline
         Sensitivity & 0.689 & 0.679 \\ \hline
         Specificity & 0.714 & 0.660 \\ \hline
@@ -1193,7 +1193,7 @@ The performance of the model in the NACC cross-center validation was analyzed an
     \label{fig:ad_nonad_roc}
 \end{figure}
 
-Based on the results of the NACC cross-center validation, a moderate decrease in overall performance was observed. The AUC score decreased by 0.032, dropping from 0.702 in the internal CV to 0.670 in the NACC cross-center validation. A similar decrease was shown by the G-mean. This performance reduction confirms the high difficulty of this classification task due to the overlap in symptoms between different CI subtypes.
+Based on the results of the NACC cross-center validation, a moderate decrease in overall performance was observed. The AUC score decreased by 0.032, dropping from 0.702 in the internal CV to 0.670 in the NACC cross-center validation. A similar decrease was shown by the G-mean. \hl{This drop in AUC from the internal CV was statistically significant (p < 0.001), although the difference itself was modest.} This performance reduction confirms the high difficulty of this classification task due to the overlap in symptoms between different CI subtypes.
 
 A slight decrease was observed in both the sensitivity and specificity scores in the unseen NACC data. The sensitivity decreased from 0.689 in the internal CV to 0.679, while the specificity decreased from 0.714 to 0.660. This indicates that the LR model found it more difficult to correctly identify cases in the NACC cross-center validation. The larger reduction in specificity means that more subjects who did not have AD were misclassified as AD. The external validation results are reported with extended performance metrics in Table~\ref{table:lr-complete-perf-task5-apdx} in the appendix.
 
