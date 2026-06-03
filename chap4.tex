@@ -123,10 +123,10 @@ Based on these complexity measures, the ENN + \acrshort{KMeansSMOTE} hybrid resa
     \hline
         Method & G-mean & Recall (NC) & Recall (CI) & kDN & N1 \\  \hline
         Baseline & 0.829 & 0.860 & 0.799 & 0.209 & 0.294 \\ \hline
-        ROS & \makecell{0.831 \\ \hl{{\small (p = 0.010)}}} & 0.885 & 0.781 & 0.213 & 0.293 \\ \hline
-        RUS & \makecell{0.831 \\ \hl{{\small (p = 0.057)}}} & 0.\textbf{892} & 0.773 & 0.158 & 0.259 \\ \hline
-        SMOTE & \makecell{0.831 \\ \hl{{\small (p = 0.004)}}} & 0.881 & 0.785 & 0.207 & 0.280 \\ \hline
-        \textbf{ENN + KMeansSMOTE} & \makecell{\textbf{0.832} \\ \hl{{\small (p = 0.026)}}} & 0.862 & \textbf{0.804} & \textbf{0.005} & \textbf{0.059} \\ \hline
+        ROS & \makecell{0.831 \\ {\small \hl{(p = 0.010)}}} & 0.885 & 0.781 & 0.213 & 0.293 \\ \hline
+        RUS & \makecell{0.831 \\ {\small \hl{(p = 0.057)}}} & 0.\textbf{892} & 0.773 & 0.158 & 0.259 \\ \hline
+        SMOTE & \makecell{0.831 \\ {\small \hl{(p = 0.004)}}} & 0.881 & 0.785 & 0.207 & 0.280 \\ \hline
+        \textbf{ENN + KMeansSMOTE} & \makecell{\textbf{0.832} \\ {\small \hl{(p = 0.026)}}} & 0.862 & \textbf{0.804} & \textbf{0.005} & \textbf{0.059} \\ \hline
     \end{tabular}
     \label{table:nc_ci_resampling}
 \end{table}
@@ -277,7 +277,7 @@ The performance of the LR model in internal and external validations for the NC 
             \hline
             \textbf{Metric} & \textbf{Internal CV} & \textbf{NACC Cross-center Validation} & \textbf{ADNI External Validation} \\
             \hline
-            AUC & \makecell{0.844 \\ \hl{{\small (0.843--0.846)}}} & \makecell{0.810 \\ \hl{{\small (0.802--0.818)}}} & \makecell{0.825 \\ \hl{{\small (0.807--0.842)}}} \\ \hline
+            AUC & \makecell{0.844 \\ {\small \hl{(0.843--0.846)}}} & \makecell{0.810 \\ {\small \hl{(0.802--0.818)}}} & \makecell{0.825 \\ {\small \hl{(0.807--0.842)}}} \\ \hline
             G-mean & 0.842 & 0.809 & 0.820 \\ \hline
             Sensitivity & 0.785 & 0.777 & 0.739 \\ \hline
             Specificity & 0.903 & 0.843 & 0.911 \\ \hline
@@ -333,7 +333,7 @@ The selected LR model for the CIND vs. dementia classification task was also eva
             \hline
             \textbf{Metric} & \textbf{Internal CV} & \textbf{NACC Cross-center Validation} & \textbf{ADNI External Validation} \\
             \hline
-            AUC & \makecell{0.828 \\ \hl{{\small (0.821--0.835)}}} & \makecell{0.828 \\ \hl{{\small (0.819--0.837)}}} & \makecell{0.841 \\ \hl{{\small (0.822--0.861)}}} \\ \hline
+            AUC & \makecell{0.828 \\ {\small \hl{(0.821--0.835)}}} & \makecell{0.828 \\ {\small \hl{(0.819--0.837)}}} & \makecell{0.841 \\ {\small \hl{(0.822--0.861)}}} \\ \hline
             G-mean & 0.828 & 0.826 & 0.840 \\ \hline
             Sensitivity & 0.827 & 0.874 & 0.888 \\ \hline
             Specificity & 0.830 & 0.782 & 0.794 \\ \hline
@@ -629,10 +629,10 @@ To handle this high data complexity, the ENN + \acrshort{BorderlineSMOTE} strate
     \hline
         Method & G-mean & Recall (NC) & Recall (CI) & kDN & N1 \\ \hline
         Baseline & 0.749 & \textbf{0.870} & 0.644 & 0.274 & 0.389 \\ \hline
-        ROS & \makecell{0.749 \\ \hl{{\small (p = 0.972)}}} & 0.853 & 0.658 & 0.272 & 0.385 \\ \hline
-        RUS & \makecell{0.752 \\ \hl{{\small (p = 0.175)}}} & 0.845 & 0.669 & 0.229 & 0.365 \\ \hline
-        SMOTE & \makecell{0.751 \\ \hl{{\small (p = 0.135)}}} & 0.860 & 0.656 & 0.267 & 0.446 \\ \hline
-        \textbf{ENN + BorderlineSMOTE} & \makecell{\textbf{0.752} \\ \hl{{\small (p = 0.343)}}} & 0.812 & \textbf{0.697} & \textbf{0.018} & \textbf{0.158} \\ \hline
+        ROS & \makecell{0.749 \\ {\small \hl{(p = 0.972)}}} & 0.853 & 0.658 & 0.272 & 0.385 \\ \hline
+        RUS & \makecell{0.752 \\ {\small \hl{(p = 0.175)}}} & 0.845 & 0.669 & 0.229 & 0.365 \\ \hline
+        SMOTE & \makecell{0.751 \\ {\small \hl{(p = 0.135)}}} & 0.860 & 0.656 & 0.267 & 0.446 \\ \hline
+        \textbf{ENN + BorderlineSMOTE} & \makecell{\textbf{0.752} \\ {\small \hl{(p = 0.343)}}} & 0.812 & \textbf{0.697} & \textbf{0.018} & \textbf{0.158} \\ \hline
     \end{tabular}
     \label{table:future_nc_ci_resampling}
 \end{table}
@@ -661,10 +661,10 @@ Based on this high complexity, the ENN + KMeansSMOTE method was selected by the 
     \hline
         Method & G-mean & Recall (Dementia) & Recall (CIND) & kDN & N1 \\ \hline
         Baseline & 0.711 & 0.770 & 0.656 & 0.260 & 0.485 \\ \hline
-        ROS & \makecell{0.715 \\ \hl{{\small (p = 0.101)}}} & 0.754 & 0.678 & 0.244 & 0.469 \\ \hline
-        RUS & \makecell{0.726 \\ \hl{{\small (p = 0.014)}}} & 0.723 & \textbf{0.728} & 0.250 & 0.470 \\ \hline
-        SMOTE & \makecell{0.715 \\ \hl{{\small (p = 0.314)}}} & 0.758 & 0.675 & 0.238 & 0.432 \\ \hline
-        \textbf{ENN + KMeansSMOTE} & \makecell{\textbf{0.730} \\ \hl{{\small (p = 0.022)}}} & \textbf{0.776} & 0.688 & \textbf{0.034} & \textbf{0.161} \\ \hline
+        ROS & \makecell{0.715 \\ {\small \hl{(p = 0.101)}}} & 0.754 & 0.678 & 0.244 & 0.469 \\ \hline
+        RUS & \makecell{0.726 \\ {\small \hl{(p = 0.014)}}} & 0.723 & \textbf{0.728} & 0.250 & 0.470 \\ \hline
+        SMOTE & \makecell{0.715 \\ {\small \hl{(p = 0.314)}}} & 0.758 & 0.675 & 0.238 & 0.432 \\ \hline
+        \textbf{ENN + KMeansSMOTE} & \makecell{\textbf{0.730} \\ {\small \hl{(p = 0.022)}}} & \textbf{0.776} & 0.688 & \textbf{0.034} & \textbf{0.161} \\ \hline
     \end{tabular}
     \label{table:future_cind_dem_resampling}
 \end{table}
@@ -808,7 +808,7 @@ The performance of the LR model to predict the future risk of CI was analyzed ac
             \hline
             \textbf{Metric} & \textbf{Internal CV} & \textbf{NACC Cross-center Validation} & \textbf{ADNI External Validation} \\
             \hline
-            AUC & \makecell{0.772 \\ \hl{{\small (0.769--0.776)}}} & \makecell{0.790 \\ \hl{{\small (0.774--0.806)}}} & \makecell{0.778 \\ \hl{{\small (0.750--0.803)}}} \\ \hline
+            AUC & \makecell{0.772 \\ {\small \hl{(0.769--0.776)}}} & \makecell{0.790 \\ {\small \hl{(0.774--0.806)}}} & \makecell{0.778 \\ {\small \hl{(0.750--0.803)}}} \\ \hline
             G-mean & 0.770 & 0.787 & 0.777 \\ \hline
             Sensitivity & 0.723 & 0.721 & 0.745 \\ \hline
             Specificity & 0.820 & 0.859 & 0.810 \\ \hline
@@ -864,7 +864,7 @@ The selected LR model for the future CIND vs. dementia prediction task was evalu
             \hline
             \textbf{Metric} & \textbf{Internal CV} & \textbf{NACC Cross-center Validation} & \textbf{ADNI External Validation} \\
             \hline
-            AUC & \makecell{0.759 \\ \hl{{\small (0.751--0.768)}}} & \makecell{0.805 \\ \hl{{\small (0.784--0.828)}}} & \makecell{0.780 \\ \hl{{\small (0.740--0.819)}}} \\ \hline
+            AUC & \makecell{0.759 \\ {\small \hl{(0.751--0.768)}}} & \makecell{0.805 \\ {\small \hl{(0.784--0.828)}}} & \makecell{0.780 \\ {\small \hl{(0.740--0.819)}}} \\ \hline
             G-mean & 0.757 & 0.803 & 0.780 \\ \hline
             Sensitivity & 0.714 & 0.746 & 0.787 \\ \hline
             Specificity & 0.804 & 0.864 & 0.773 \\ \hline
@@ -1096,10 +1096,10 @@ As shown in Table~\ref{table:ad_nonad_resampling}, the severe overlap in the bas
     \hline
         Method & G-mean & Recall (AD) & Recall (non-AD) & kDN & N1 \\ \hline
         Baseline & 0.668 & 0.714 & 0.626 & 0.323 & 0.511 \\ \hline
-        ROS & \makecell{0.673 \\ \hl{{\small (p = 0.125)}}} & 0.666 & 0.681 & 0.317 & 0.503 \\ \hline
-        RUS & \makecell{0.674 \\ \hl{{\small (p = 0.157)}}} & 0.639 & \textbf{0.712} & 0.306 & 0.522 \\ \hline
-        SMOTE & \makecell{0.674 \\ \hl{{\small (p = 0.011)}}} & 0.677 & 0.671 & 0.315 & 0.491 \\ \hline
-        \textbf{ENN + KMeansSMOTE} & \makecell{\textbf{0.710} \\ \hl{{\small (p = 0.001)}}} & \textbf{0.729} & 0.692 & \textbf{0.021} & \textbf{0.125} \\ \hline
+        ROS & \makecell{0.673 \\ {\small \hl{(p = 0.125)}}} & 0.666 & 0.681 & 0.317 & 0.503 \\ \hline
+        RUS & \makecell{0.674 \\ {\small \hl{(p = 0.157)}}} & 0.639 & \textbf{0.712} & 0.306 & 0.522 \\ \hline
+        SMOTE & \makecell{0.674 \\ {\small \hl{(p = 0.011)}}} & 0.677 & 0.671 & 0.315 & 0.491 \\ \hline
+        \textbf{ENN + KMeansSMOTE} & \makecell{\textbf{0.710} \\ {\small \hl{(p = 0.001)}}} & \textbf{0.729} & 0.692 & \textbf{0.021} & \textbf{0.125} \\ \hline
     \end{tabular}
     \label{table:ad_nonad_resampling}
 \end{table}
@@ -1176,7 +1176,7 @@ The performance of the model in the NACC cross-center validation was analyzed an
         \hline
         \textbf{Metric} & \textbf{Internal CV} & \textbf{NACC Cross-Center Validation} \\
         \hline
-        AUC & \makecell{0.702 \\ \hl{{\small (0.698--0.706)}}} & \makecell{0.670 \\ \hl{{\small (0.658--0.681)}}} \\ \hline
+        AUC & \makecell{0.702 \\ {\small \hl{(0.698--0.706)}}} & \makecell{0.670 \\ {\small \hl{(0.658--0.681)}}} \\ \hline
         G-mean & 0.702 & 0.670 \\ \hline
         Sensitivity & 0.689 & 0.679 \\ \hline
         Specificity & 0.714 & 0.660 \\ \hline
