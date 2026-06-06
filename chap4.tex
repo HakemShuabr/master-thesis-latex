@@ -25,6 +25,7 @@ As shown in Table~\ref{table:fs-task1}, the proposed feature selection method su
         Baseline & 68 & 0.840 & 0.700 & 0.946 \\ \hline
         Boruta & 15 & 0.833 & 0.824 & 0.815 \\ \hline
         \textbf{Proposed Method} & \textbf{12} & \textbf{0.829} & \textbf{0.828} & \textbf{0.788} \\ \hline
+        \multicolumn{5}{p{400pt}}{\footnotesize \hl{F1: Fisher's discriminant ratio (feature overlap measure), Fitness Score: combined score balancing performance and feature reduction, G-mean: geometric mean score.}}
     \end{tabular}
     \label{table:fs-task1}
 \end{table}
@@ -71,6 +72,7 @@ Feature selection was also extended to the CIND vs. dementia classification task
         Baseline & 71 & 0.833 & 0.694 & 0.941 \\ \hline
         Boruta & 14 & 0.799 & 0.800 & 0.889 \\ \hline
         \textbf{Proposed Method} & \textbf{11} & \textbf{0.815} & \textbf{0.820} & \textbf{0.754} \\ \hline
+        \multicolumn{5}{p{400pt}}{\footnotesize \hl{F1: Fisher's discriminant ratio (feature overlap measure), Fitness Score: combined score balancing performance and feature reduction, G-mean: geometric mean score.}}
     \end{tabular}
     \label{table:fs-task2}
 \end{table}
@@ -126,7 +128,8 @@ Based on these complexity measures, the ENN + \acrshort{KMeansSMOTE} hybrid resa
         ROS & \makecell{0.831 \\ {\small \hl{(p = 0.010)}}} & 0.885 & 0.781 & 0.213 & 0.293 \\ \hline
         RUS & \makecell{0.831 \\ {\small \hl{(p = 0.057)}}} & 0.\textbf{892} & 0.773 & 0.158 & 0.259 \\ \hline
         SMOTE & \makecell{0.831 \\ {\small \hl{(p = 0.004)}}} & 0.881 & 0.785 & 0.207 & 0.280 \\ \hline
-        \textbf{ENN + KMeansSMOTE} & \makecell{\textbf{0.832} \\ {\small \hl{(p = 0.026)}}} & 0.862 & \textbf{0.804} & \textbf{0.005} & \textbf{0.059} \\ \hline
+        \makecell{\textbf{ENN +} \\ \textbf{KMeansSMOTE}} & \makecell{\textbf{0.832} \\ {\small \hl{(p = 0.026)}}} & 0.862 & \textbf{0.804} & \textbf{0.005} & \textbf{0.059} \\ \hline
+        \multicolumn{6}{p{400pt}}{\footnotesize \hl{G-mean: geometric mean score, kDN: k-disagreeing neighbors (instance-level class overlap), N1: structural class overlap, Recall: per-class recall.}}
     \end{tabular}
     \label{table:nc_ci_resampling}
 \end{table}
@@ -199,7 +202,7 @@ The model selection process started by using the cost-effective model selection 
         $1,721$ & 
         $11,613$ \\
         \hline
-        \multicolumn{5}{p{400pt}}{\textsuperscript{1}Gain is calculated as the ratio of the selected model’s throughput to the benchmark model’s throughput. Values indicate the factor by which training and prediction speed have improved. Gain is not presented when the selected model is the benchmark model.}
+        \multicolumn{5}{p{400pt}}{\footnotesize \textsuperscript{1}\hl{Training throughput is reported in training samples per second, and prediction throughput in predictions per second.} Gain is calculated as the ratio of the selected model’s throughput to the benchmark model’s throughput. Values indicate the factor by which training and prediction speed have improved. Gain is not presented when the selected model is the benchmark model.}
     \end{tabularx}
 \end{table}
 
@@ -253,7 +256,7 @@ The same process of model fine-tuning and selection was applied to the CIND vs. 
         $531$ $(1.07\times)$ &
         $3,526$ $(1.00\times)$ \\
         \hline
-        \multicolumn{5}{p{400pt}}{\textsuperscript{1}Gain is calculated as the ratio of the selected model’s throughput to the benchmark model’s throughput. Values indicate the factor by which training and prediction speed have improved. Gain is not presented when the selected model is the benchmark model.}
+        \multicolumn{5}{p{400pt}}{\footnotesize \textsuperscript{1}\hl{Training throughput is reported in training samples per second, and prediction throughput in predictions per second.} Gain is calculated as the ratio of the selected model’s throughput to the benchmark model’s throughput. Values indicate the factor by which training and prediction speed have improved. Gain is not presented when the selected model is the benchmark model.}
     \end{tabularx}
 \end{table}
 
@@ -283,7 +286,7 @@ The performance of the LR model in internal and external validations for the NC 
             Specificity & 0.903 & 0.843 & 0.911 \\ \hline
             F1-score & 0.848 & 0.823 & 0.833 \\
             \hline
-            \multicolumn{4}{p{400pt}}{Sensitivity refers to the recall of the CI class, while Specificity refers to the recall of the NC class.}
+            \multicolumn{4}{p{400pt}}{\footnotesize \hl{AUC: area under the curve, F1-score: harmonic mean of precision and recall, G-mean: geometric mean score, Sensitivity: recall of the CI class, Specificity: recall of the NC class.}}
         \end{tabularx}
 \end{table}
 
@@ -339,7 +342,7 @@ The selected LR model for the CIND vs. dementia classification task was also eva
             Specificity & 0.830 & 0.782 & 0.794 \\ \hline
             F1-score & 0.842 & 0.837 & 0.777 \\
             \hline
-            \multicolumn{4}{p{400pt}}{Sensitivity refers to the recall of the dementia class, while Specificity refers to the recall of the CIND class.}
+            \multicolumn{4}{p{400pt}}{\footnotesize \hl{AUC: area under the curve, F1-score: harmonic mean of precision and recall, G-mean: geometric mean score, Sensitivity: recall of the dementia class, Specificity: recall of the CIND class.}}
         \end{tabularx}
 \end{table}
 
@@ -503,6 +506,7 @@ The feature selection evaluation was first conducted for the NC vs. CI predictio
         Baseline & 66 & 0.775 & 0.646 & 0.961 \\ \hline
         Boruta & 14 & 0.765 & 0.769 & 0.875 \\ \hline
         \textbf{Proposed Method} & \textbf{9} & \textbf{0.749} & \textbf{0.768} & \textbf{0.844} \\ \hline
+        \multicolumn{5}{p{400pt}}{\footnotesize \hl{F1: Fisher's discriminant ratio (feature overlap measure), Fitness Score: combined score balancing performance and feature reduction, G-mean: geometric mean score.}}
     \end{tabular}
     \label{table:fs-task3}
 \end{table}
@@ -520,6 +524,7 @@ Since the features selected by the proposed method resulted in the lowest RF per
         Baseline (66 features) & 0.775 & 0.772 & 0.766 \\ \hline
         Boruta (14 features) & 0.765 & 0.759 & 0.763 \\ \hline
         Proposed Method (9 features) & 0.749 & 0.759 & 0.763 \\ \hline
+        \multicolumn{4}{p{400pt}}{\footnotesize \hl{G-mean: geometric mean score, LR: logistic regression, RF: random forest, SVM: support vector machines.}}
     \end{tabular}
     \label{table:fs-task3-more-models}
 \end{table}
@@ -563,6 +568,7 @@ This subsection provides the results of the feature selection for the future CIN
         Baseline & 67 & 0.755 & 0.629 & 0.969 \\ \hline
         Boruta & 14 & 0.738 & 0.747 & 0.869 \\ \hline
         \textbf{Proposed Method} & \textbf{10} & \textbf{0.711} & \textbf{0.734} & \textbf{0.848} \\ \hline
+        \multicolumn{5}{p{400pt}}{\footnotesize \hl{F1: Fisher's discriminant ratio (feature overlap measure), Fitness Score: combined score balancing performance and feature reduction, G-mean: geometric mean score.}}
     \end{tabular}
     \label{table:fs-task4}
 \end{table}
@@ -582,6 +588,7 @@ To further support this claim, the performance of the selected features of the t
         Baseline (67 features) & 0.755 & 0.765 & 0.771 \\ \hline
         Boruta (14 features) & 0.738 & 0.76 & 0.756 \\ \hline
         Proposed Method (10 features) & 0.711 & 0.761 & 0.758 \\ \hline
+        \multicolumn{4}{p{400pt}}{\footnotesize \hl{G-mean: geometric mean score, LR: logistic regression, RF: random forest, SVM: support vector machines.}}
     \end{tabular}
     \label{table:fs-task4-more-models}
 \end{table}
@@ -632,7 +639,8 @@ To handle this high data complexity, the ENN + \acrshort{BorderlineSMOTE} strate
         ROS & \makecell{0.749 \\ {\small \hl{(p = 0.972)}}} & 0.853 & 0.658 & 0.272 & 0.385 \\ \hline
         RUS & \makecell{0.752 \\ {\small \hl{(p = 0.175)}}} & 0.845 & 0.669 & 0.229 & 0.365 \\ \hline
         SMOTE & \makecell{0.751 \\ {\small \hl{(p = 0.135)}}} & 0.860 & 0.656 & 0.267 & 0.446 \\ \hline
-        \textbf{ENN + BorderlineSMOTE} & \makecell{\textbf{0.752} \\ {\small \hl{(p = 0.343)}}} & 0.812 & \textbf{0.697} & \textbf{0.018} & \textbf{0.158} \\ \hline
+        \makecell{\textbf{ENN +} \\ \textbf{BorderlineSMOTE}} & \makecell{\textbf{0.752} \\ {\small \hl{(p = 0.343)}}} & 0.812 & \textbf{0.697} & \textbf{0.018} & \textbf{0.158} \\ \hline
+        \multicolumn{6}{p{400pt}}{\footnotesize \hl{G-mean: geometric mean score, kDN: k-disagreeing neighbors (instance-level class overlap), N1: structural class overlap, Recall: per-class recall.}}
     \end{tabular}
     \label{table:future_nc_ci_resampling}
 \end{table}
@@ -664,7 +672,8 @@ Based on this high complexity, the ENN + KMeansSMOTE method was selected by the 
         ROS & \makecell{0.715 \\ {\small \hl{(p = 0.101)}}} & 0.754 & 0.678 & 0.244 & 0.469 \\ \hline
         RUS & \makecell{0.726 \\ {\small \hl{(p = 0.014)}}} & 0.723 & \textbf{0.728} & 0.250 & 0.470 \\ \hline
         SMOTE & \makecell{0.715 \\ {\small \hl{(p = 0.314)}}} & 0.758 & 0.675 & 0.238 & 0.432 \\ \hline
-        \textbf{ENN + KMeansSMOTE} & \makecell{\textbf{0.730} \\ {\small \hl{(p = 0.022)}}} & \textbf{0.776} & 0.688 & \textbf{0.034} & \textbf{0.161} \\ \hline
+        \makecell{\textbf{ENN +} \\ \textbf{KMeansSMOTE}} & \makecell{\textbf{0.730} \\ {\small \hl{(p = 0.022)}}} & \textbf{0.776} & 0.688 & \textbf{0.034} & \textbf{0.161} \\ \hline
+        \multicolumn{6}{p{400pt}}{\footnotesize \hl{G-mean: geometric mean score, kDN: k-disagreeing neighbors (instance-level class overlap), N1: structural class overlap, Recall: per-class recall.}}
     \end{tabular}
     \label{table:future_cind_dem_resampling}
 \end{table}
@@ -731,7 +740,7 @@ The cost-effective model selection algorithm (Algorithm \ref{alg:model-selection
         $2,647$ $(1.02\times)$ &
         $20,074$ $(1.28\times)$ \\
         \hline
-        \multicolumn{5}{p{400pt}}{\textsuperscript{1}Gain is calculated as the ratio of the selected model’s throughput to the benchmark model’s throughput. Values indicate the factor by which training and prediction speed have improved.}
+        \multicolumn{5}{p{400pt}}{\footnotesize \textsuperscript{1}\hl{Training throughput is reported in training samples per second, and prediction throughput in predictions per second.} Gain is calculated as the ratio of the selected model’s throughput to the benchmark model’s throughput. Values indicate the factor by which training and prediction speed have improved.}
     \end{tabularx}
 \end{table}
 
@@ -785,7 +794,7 @@ Similar to the previous task, the cost-effective selection algorithm was utilize
         $9,608$ $(1.07\times)$ &
         $46,531$ $(1.09\times)$ \\
         \hline
-        \multicolumn{5}{p{400pt}}{\textsuperscript{1}Gain is calculated as the ratio of the selected model’s throughput to the benchmark model’s throughput. Values indicate the factor by which training and prediction speed have improved.}
+        \multicolumn{5}{p{400pt}}{\footnotesize \textsuperscript{1}\hl{Training throughput is reported in training samples per second, and prediction throughput in predictions per second.} Gain is calculated as the ratio of the selected model’s throughput to the benchmark model’s throughput. Values indicate the factor by which training and prediction speed have improved.}
     \end{tabularx}
 \end{table}
 
@@ -814,7 +823,7 @@ The performance of the LR model to predict the future risk of CI was analyzed ac
             Specificity & 0.820 & 0.859 & 0.810 \\ \hline
             F1-score & 0.747 & 0.772 & 0.791 \\
             \hline
-             \multicolumn{4}{p{400pt}}{Sensitivity refers to the recall of the CI class, while Specificity refers to the recall of the NC class.}
+             \multicolumn{4}{p{400pt}}{\footnotesize \hl{AUC: area under the curve, F1-score: harmonic mean of precision and recall, G-mean: geometric mean score, Sensitivity: recall of the CI class, Specificity: recall of the NC class.}}
         \end{tabularx}
 \end{table}
 
@@ -870,7 +879,7 @@ The selected LR model for the future CIND vs. dementia prediction task was evalu
             Specificity & 0.804 & 0.864 & 0.773 \\ \hline
             F1-score & 0.773 & 0.811 & 0.715 \\
             \hline
-            \multicolumn{4}{p{400pt}}{Sensitivity refers to the recall of the dementia class, while Specificity refers to the recall of the CIND class.}
+            \multicolumn{4}{p{400pt}}{\footnotesize \hl{AUC: area under the curve, F1-score: harmonic mean of precision and recall, G-mean: geometric mean score, Sensitivity: recall of the dementia class, Specificity: recall of the CIND class.}}
         \end{tabularx}
 \end{table}
 
@@ -1033,6 +1042,7 @@ The evaluation of the feature selection method was applied to this classificatio
         Baseline & 77 & 0.730 & 0.608 & 0.988 \\ \hline
         Boruta & 12 & 0.699 & 0.723 & 0.955 \\ \hline
         \textbf{Proposed Method} & \textbf{8} & \textbf{0.668} & \textbf{0.706} & \textbf{0.931} \\ \hline
+        \multicolumn{5}{p{400pt}}{\footnotesize \hl{F1: Fisher's discriminant ratio (feature overlap measure), Fitness Score: combined score balancing performance and feature reduction, G-mean: geometric mean score.}}
     \end{tabular}
     \label{table:fs-task5}
 \end{table}
@@ -1051,6 +1061,7 @@ The Boruta method obtained the highest fitness score of 0.723 by selecting 12 fe
         Baseline (77 features) & 0.730 & 0.724 & 0.736 \\ \hline
         Boruta (12 features) & 0.699 & 0.687 & 0.705 \\ \hline
         Proposed Method (8 features) & 0.668 & 0.691 & 0.701 \\ \hline
+        \multicolumn{4}{p{400pt}}{\footnotesize \hl{G-mean: geometric mean score, LR: logistic regression, RF: random forest, SVM: support vector machines.}}
     \end{tabular}
     \label{table:fs-task5-more-models}
 \end{table}
@@ -1099,7 +1110,8 @@ As shown in Table~\ref{table:ad_nonad_resampling}, the severe overlap in the bas
         ROS & \makecell{0.673 \\ {\small \hl{(p = 0.125)}}} & 0.666 & 0.681 & 0.317 & 0.503 \\ \hline
         RUS & \makecell{0.674 \\ {\small \hl{(p = 0.157)}}} & 0.639 & \textbf{0.712} & 0.306 & 0.522 \\ \hline
         SMOTE & \makecell{0.674 \\ {\small \hl{(p = 0.011)}}} & 0.677 & 0.671 & 0.315 & 0.491 \\ \hline
-        \textbf{ENN + KMeansSMOTE} & \makecell{\textbf{0.710} \\ {\small \hl{(p = 0.001)}}} & \textbf{0.729} & 0.692 & \textbf{0.021} & \textbf{0.125} \\ \hline
+        \makecell{\textbf{ENN +} \\ \textbf{KMeansSMOTE}} & \makecell{\textbf{0.710} \\ {\small \hl{(p = 0.001)}}} & \textbf{0.729} & 0.692 & \textbf{0.021} & \textbf{0.125} \\ \hline
+        \multicolumn{6}{p{400pt}}{\footnotesize \hl{G-mean: geometric mean score, kDN: k-disagreeing neighbors (instance-level class overlap), N1: structural class overlap, Recall: per-class recall.}}
     \end{tabular}
     \label{table:ad_nonad_resampling}
 \end{table}
@@ -1155,7 +1167,7 @@ The cost-effective selection algorithm (Algorithm \ref{alg:model-selection}) was
         $1,157$ &
         $7,466$ \\
         \hline
-        \multicolumn{4}{p{400pt}}{\textsuperscript{1}Gain is calculated as the ratio of the selected model’s throughput to the benchmark model’s throughput. Values indicate the factor by which training and prediction speed have improved. Gain is not presented when the selected model is the benchmark model.}
+        \multicolumn{4}{p{400pt}}{\footnotesize \textsuperscript{1}\hl{Training throughput is reported in training samples per second, and prediction throughput in predictions per second.} Gain is calculated as the ratio of the selected model’s throughput to the benchmark model’s throughput. Values indicate the factor by which training and prediction speed have improved. Gain is not presented when the selected model is the benchmark model.}
     \end{tabularx}
 \end{table}
 
@@ -1182,7 +1194,7 @@ The performance of the model in the NACC cross-center validation was analyzed an
         Specificity & 0.714 & 0.660 \\ \hline
         F1-score & 0.725 & 0.706 \\
         \hline
-        \multicolumn{3}{p{400pt}}{Sensitivity refers to the recall of the AD class, while Specificity refers to the recall of the non-AD class.}
+        \multicolumn{3}{p{400pt}}{\footnotesize \hl{AUC: area under the curve, F1-score: harmonic mean of precision and recall, G-mean: geometric mean score, Sensitivity: recall of the AD class, Specificity: recall of the non-AD class.}}
     \end{tabular}
 \end{table}
 
