@@ -39,6 +39,9 @@ To simplify the classification problem, the main problem was segmented into five
     \centering
     \includegraphics[width=\textwidth]{figures/classification-tasks.pdf}
     \caption{The segmentation of the classification problem into five tasks using hierarchical classification strategy}
+    \begin{minipage}{\textwidth}
+      \footnotesize \hl{The diagram arranges the five binary tasks along two dimensions: the timeline (current status versus future prediction) and the diagnosis (general versus specific). The arrows indicate the common diagnostic paths followed in clinical practice.}
+    \end{minipage}
     \label{fig:classification-tasks}
 \end{figure}
 
@@ -111,6 +114,9 @@ The data selection method for future cognitive status prediction tasks is illust
     \centering
     \includegraphics[width=0.8\linewidth]{figures/prediction-data-selection.pdf}
     \caption{The data selection method for the prediction of future cognitive status}
+    \begin{minipage}{\textwidth}
+      \footnotesize \hl{Each column represents a single subject, each row represents the visits of a single subject, and each box represents a single visit. A tick mark indicates included subjects (subjects with a visit inside the selection window), while a cross marks excluded subjects. Boxes labelled "IN" provide the input data from the baseline visit, and boxes labelled "T" provide the target class from the visit within the selection window.}
+    \end{minipage}
     \label{fig:prediction-data-selection}
 \end{figure}
 
@@ -226,6 +232,9 @@ The minimum union method was utilized to combine these individual rankings into 
     \centering
     \includegraphics[width=\textwidth]{figures/minimum_union_diagram.pdf}
     \caption{Illustration of the minimum union feature ranking aggregation method}
+    \begin{minipage}{\textwidth}
+      \footnotesize \hl{For the illustrated example, the four feature ranking methods each produce a separate ranking. The final unified ranking is derived by ordering the features according to their minimum rank across the four methods, and the average rank is used when several features share the same minimum rank (for example, feature B and feature C).}
+    \end{minipage}
     \label{fig:minimum-union}
 \end{figure}
 

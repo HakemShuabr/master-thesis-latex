@@ -294,6 +294,9 @@ The performance of the LR model in internal and external validations for the NC 
     \centering
     \includegraphics[width=0.7\textwidth]{figures/impaired_classification_all_tests_roc_overlay.png}
     \caption{ROC curves comparing the performance of the logistic regression model for the NC vs. CI classification task}
+    \begin{minipage}{\textwidth}
+      \footnotesize \hl{The horizontal axis shows the false positive rate (1 -- specificity) and the vertical axis shows the true positive rate (sensitivity). Each curve represents one validation dataset.}
+    \end{minipage}
     \label{figure:nc_ci_roc}
 \end{figure}
 
@@ -307,6 +310,9 @@ The prediction of the LR model was calibrated to ensure that it generates probab
     \centering
     \includegraphics[width=1.0\textwidth]{figures/calibration/impaired_classification_both_calibration_curve.png}
     \caption{Model calibration curves for the NC vs. CI classification task}
+    \begin{minipage}{\textwidth}
+      \footnotesize \hl{The horizontal axis shows the predicted probability and the vertical axis shows the observed frequency of the positive class. The diagonal line represents perfect calibration, and the curves compare the model before and after beta calibration.}
+    \end{minipage}
     \label{fig:nc_ci_calib_curve}
 \end{figure}
 
@@ -350,6 +356,9 @@ The selected LR model for the CIND vs. dementia classification task was also eva
     \centering
     \includegraphics[width=0.7\textwidth]{figures/dementia_classification_all_tests_roc_overlay.png}
     \caption{ROC curves comparing the performance of the logistic regression model for the CIND vs. dementia classification task}
+    \begin{minipage}{\textwidth}
+      \footnotesize \hl{The horizontal axis shows the false positive rate (1 -- specificity) and the vertical axis shows the true positive rate (sensitivity). Each curve represents one validation dataset.}
+    \end{minipage}
     \label{figure:cind_dementia_roc}
 \end{figure}
 
@@ -363,6 +372,9 @@ To ensure that the LR model generates probabilities that accurately reflect the 
     \centering
     \includegraphics[width=1.0\textwidth]{figures/calibration/dementia_classification_both_calibration_curve.png}
     \caption{Model calibration curves for the CIND vs. dementia classification task}
+    \begin{minipage}{\textwidth}
+      \footnotesize \hl{The horizontal axis shows the predicted probability and the vertical axis shows the observed frequency of the positive class. The diagonal line represents perfect calibration, and the curves compare the model before and after beta calibration.}
+    \end{minipage}
     \label{fig:cind_dementia_calib_curve}
 \end{figure}
 
@@ -392,6 +404,9 @@ The global feature importance ranking of this task is provided in Figure~\ref{fi
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/impaired_classification_both_feature_importance_comparison.png}
     \caption{Feature importance in the NACC cross-center validation and the ADNI external validation for the NC vs. CI classification task}
+    \begin{minipage}{\textwidth}
+      \footnotesize \hl{The bars represent the mean absolute SHAP value of each feature, which ranks the contribution of the feature to the model prediction in the two validation datasets.}
+    \end{minipage}
     \label{figure:nc_ci_feature_importance}
 \end{figure}
 
@@ -401,6 +416,9 @@ Regarding the local explanation, the waterfall plots in Figure~\ref{figure:nc_ci
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/impaired_classification_adni_true_positive_waterfall.png}
     \caption{SHAP waterfall plots for two instances correctly classified as cognitive impairment}
+    \begin{minipage}{\textwidth}
+      \footnotesize \hl{The plot shows how the value of each feature shifts the prediction from the base value to the final predicted probability for a single instance.}
+    \end{minipage}
     \label{figure:nc_ci_pos_waterfall}
 \end{figure}
 
@@ -410,6 +428,9 @@ Looking at the correctly classified NC instances in Figure~\ref{figure:nc_ci_neg
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/impaired_classification_adni_true_positive_waterfall.png}
     \caption{SHAP waterfall plots for two instances correctly classified as normal cognition}
+    \begin{minipage}{\textwidth}
+      \footnotesize \hl{The plot shows how the value of each feature shifts the prediction from the base value to the final predicted probability for a single instance.}
+    \end{minipage}
     \label{figure:nc_ci_neg_waterfall}
 \end{figure}
 
@@ -443,6 +464,9 @@ The global feature importance ranking for the CIND vs. dementia classification t
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/dementia_classification_both_feature_importance_comparison.png}
     \caption{Feature importance in the NACC cross-center validation and the ADNI external validation for the CIND vs. dementia classification task}
+    \begin{minipage}{\textwidth}
+      \footnotesize \hl{The bars represent the mean absolute SHAP value of each feature, which ranks the contribution of the feature to the model prediction in the two validation datasets.}
+    \end{minipage}
     \label{figure:cind_dementia_feature_importance}
 \end{figure}
 
@@ -452,6 +476,9 @@ To evaluate the local explanation of the model, two correctly classified instanc
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/dementia_classification_adni_true_positive_waterfall.png}
     \caption{SHAP waterfall plots for two instances correctly classified as dementia}
+    \begin{minipage}{\textwidth}
+      \footnotesize \hl{The plot shows how the value of each feature shifts the prediction from the base value to the final predicted probability for a single instance.}
+    \end{minipage}
     \label{figure:cind_dementia_pos_waterfall}
 \end{figure}
 
@@ -461,6 +488,9 @@ The other two randomly selected CIND instances in Figure~\ref{figure:cind_dement
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/dementia_classification_adni_true_negative_waterfall.png}
     \caption{SHAP waterfall plots for two instances correctly classified as cognitive impairment but not dementia (CIND)}
+    \begin{minipage}{\textwidth}
+      \footnotesize \hl{The plot shows how the value of each feature shifts the prediction from the base value to the final predicted probability for a single instance.}
+    \end{minipage}
     \label{figure:cind_dementia_neg_waterfall}
 \end{figure}
 
@@ -831,6 +861,9 @@ The performance of the LR model to predict the future risk of CI was analyzed ac
     \centering
     \includegraphics[width=0.7\textwidth]{figures/impaired_prediction_all_tests_roc_overlay.png}
     \caption{ROC curves comparing the performance of the logistic regression model for the future NC vs. CI prediction task}
+    \begin{minipage}{\textwidth}
+      \footnotesize \hl{The horizontal axis shows the false positive rate (1 -- specificity) and the vertical axis shows the true positive rate (sensitivity). Each curve represents one validation dataset.}
+    \end{minipage}
     \label{fig:future_nc_ci_roc}
 \end{figure}
 
@@ -844,6 +877,9 @@ Calibration of the LR model was also performed to produce a reliable estimate of
     \centering
     \includegraphics[width=1.0\textwidth]{figures/calibration/impaired_prediction_both_calibration_curve.png}
     \caption{Model calibration curves for the future NC vs. CI prediction task}
+    \begin{minipage}{\textwidth}
+      \footnotesize \hl{The horizontal axis shows the predicted probability and the vertical axis shows the observed frequency of the positive class. The diagonal line represents perfect calibration, and the curves compare the model before and after beta calibration.}
+    \end{minipage}
     \label{fig:future_nc_ci_calib_curve}
 \end{figure}
 
@@ -887,6 +923,9 @@ The selected LR model for the future CIND vs. dementia prediction task was evalu
     \centering
     \includegraphics[width=0.7\textwidth]{figures/dementia_prediction_all_tests_roc_overlay.png}
     \caption{ROC curves comparing the performance of the logistic regression model for the future CIND vs. dementia prediction task}
+    \begin{minipage}{\textwidth}
+      \footnotesize \hl{The horizontal axis shows the false positive rate (1 -- specificity) and the vertical axis shows the true positive rate (sensitivity). Each curve represents one validation dataset.}
+    \end{minipage}
     \label{fig:future_cind_dementia_roc}
 \end{figure}
 
@@ -902,6 +941,9 @@ The selected LR model was calibrated to improve its estimation of future dementi
     \centering
     \includegraphics[width=1.0\textwidth]{figures/calibration/dementia_prediction_both_calibration_curve.png}
     \caption{Model calibration curves for the future CIND vs. dementia prediction task}
+    \begin{minipage}{\textwidth}
+      \footnotesize \hl{The horizontal axis shows the predicted probability and the vertical axis shows the observed frequency of the positive class. The diagonal line represents perfect calibration, and the curves compare the model before and after beta calibration.}
+    \end{minipage}
     \label{fig:future_cind_dementia_calib_curve}
 \end{figure}
 
@@ -930,6 +972,9 @@ The features in the future prediction of NC vs. CI are ranked according to their
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/impaired_prediction_both_feature_importance_comparison.png}
     \caption{Feature importance in the NACC cross-center validation and the ADNI external validation for the future NC vs. CI prediction task}
+    \begin{minipage}{\textwidth}
+      \footnotesize \hl{The bars represent the mean absolute SHAP value of each feature, which ranks the contribution of the feature to the model prediction in the two validation datasets.}
+    \end{minipage}
     \label{figure:nc_ci_prediction_feature_importance}
 \end{figure}
 
@@ -939,6 +984,9 @@ Analyzing the local explanation of the selected model is crucial, as subjects wi
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/impaired_prediction_adni_true_positive_waterfall.png}
     \caption{SHAP waterfall plots for two instances correctly predicted as having risk of cognitive impairment within five years in future}
+    \begin{minipage}{\textwidth}
+      \footnotesize \hl{The plot shows how the value of each feature shifts the prediction from the base value to the final predicted probability for a single instance.}
+    \end{minipage}
     \label{figure:nc_ci_prediction_pos_waterfall}
 \end{figure}
 
@@ -948,6 +996,9 @@ A similar analysis was also performed on two instances correctly predicted as NC
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/impaired_prediction_adni_true_negative_waterfall.png}
     \caption{SHAP waterfall plots for two instances correctly predicted as normal cognition within five years in future}
+    \begin{minipage}{\textwidth}
+      \footnotesize \hl{The plot shows how the value of each feature shifts the prediction from the base value to the final predicted probability for a single instance.}
+    \end{minipage}
     \label{figure:nc_ci_prediction_neg_waterfall}
 \end{figure}
 
@@ -981,6 +1032,9 @@ The global feature importance ranking of this prediction task is demonstrated in
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/dementia_prediction_both_feature_importance_comparison.png}
     \caption{Feature importance in the NACC cross-center validation and the ADNI external validation for the future CIND vs. dementia prediction task}
+    \begin{minipage}{\textwidth}
+      \footnotesize \hl{The bars represent the mean absolute SHAP value of each feature, which ranks the contribution of the feature to the model prediction in the two validation datasets.}
+    \end{minipage}
     \label{figure:cind_dementia_prediction_feature_importance}
 \end{figure}
 
@@ -990,6 +1044,9 @@ The local explanation of the selected LR model for the future prediction of CIND
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/dementia_prediction_adni_true_positive_waterfall.png}
     \caption{SHAP waterfall plots for two instances correctly predicted as having risk of dementia within five years in future}
+    \begin{minipage}{\textwidth}
+      \footnotesize \hl{The plot shows how the value of each feature shifts the prediction from the base value to the final predicted probability for a single instance.}
+    \end{minipage}
     \label{figure:cind_dementia_prediction_pos_waterfall}
 \end{figure}
 
@@ -1000,6 +1057,9 @@ Figure~\ref{figure:cind_dementia_prediction_neg_waterfall} shows the waterfall p
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/dementia_prediction_adni_true_negative_waterfall.png}
     \caption{SHAP waterfall plots for two instances correctly predicted as having risk of CIND within five years in future}
+    \begin{minipage}{\textwidth}
+      \footnotesize \hl{The plot shows how the value of each feature shifts the prediction from the base value to the final predicted probability for a single instance.}
+    \end{minipage}
     \label{figure:cind_dementia_prediction_neg_waterfall}
 \end{figure}
 
@@ -1202,6 +1262,9 @@ The performance of the model in the NACC cross-center validation was analyzed an
     \centering
     \includegraphics[width=0.7\textwidth]{figures/type_classification_all_tests_roc_overlay.png}
     \caption{ROC curves comparing the performance of the logistic regression model for the AD vs. non-AD classification task}
+    \begin{minipage}{\textwidth}
+      \footnotesize \hl{The horizontal axis shows the false positive rate (1 -- specificity) and the vertical axis shows the true positive rate (sensitivity). Each curve represents one validation dataset.}
+    \end{minipage}
     \label{fig:ad_nonad_roc}
 \end{figure}
 
@@ -1215,6 +1278,9 @@ The selected LR model was calibrated to ensure that the predicted probabilities 
     \centering
     \includegraphics[width=1.0\textwidth]{figures/calibration/type_classification_nacc_test_calibration_curve.png}
     \caption{Model calibration curves of the NACC cross-center validation for the AD vs. non-AD classification task}
+    \begin{minipage}{\textwidth}
+      \footnotesize \hl{The horizontal axis shows the predicted probability and the vertical axis shows the observed frequency of the positive class. The diagonal line represents perfect calibration, and the curves compare the model before and after beta calibration.}
+    \end{minipage}
     \label{fig:ad_nonad_calib_curve}
 \end{figure}
 
@@ -1239,6 +1305,9 @@ The bar chart in Figure~\ref{figure:ad_feature_importance} illustrates the globa
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/type_classification_nacc_shap_barchart.png}
     \caption{Feature importance in the NACC cross-center validation and the ADNI external validation for the AD vs. non-AD classification task}
+    \begin{minipage}{\textwidth}
+      \footnotesize \hl{The bars represent the mean absolute SHAP value of each feature, which ranks the contribution of the feature to the model prediction in the two validation datasets.}
+    \end{minipage}
     \label{figure:ad_feature_importance}
 \end{figure}
 
@@ -1248,6 +1317,9 @@ In this task, a local explanation was performed to evaluate how the features con
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/type_classification_nacc_true_positive_waterfall.png}
     \caption{SHAP waterfall plots for two instances correctly classified as Alzheimer's disease}
+    \begin{minipage}{\textwidth}
+      \footnotesize \hl{The plot shows how the value of each feature shifts the prediction from the base value to the final predicted probability for a single instance.}
+    \end{minipage}
     \label{figure:ad_pos_waterfall}
 \end{figure}
 
@@ -1258,5 +1330,8 @@ A similar analysis was performed with two non-AD instances in Figure~\ref{figure
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/type_classification_nacc_true_negative_waterfall.png}
     \caption{SHAP waterfall plots for two instances correctly classified as non Alzheimer's disease}
+    \begin{minipage}{\textwidth}
+      \footnotesize \hl{The plot shows how the value of each feature shifts the prediction from the base value to the final predicted probability for a single instance.}
+    \end{minipage}
     \label{figure:ad_neg_waterfall}
 \end{figure}
