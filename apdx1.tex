@@ -15,7 +15,7 @@ Details of the initial variables obtained from the National Alzheirmer's Coordin
 
 \begin{longtable}{|M{3cm}|M{2.5cm}|M{2cm}|M{5cm}|}
 
-    \caption{List of the initially selected accessible data variables}
+    \caption{List of the initially selected accessible data variables from the NACC UDS}
     \label{table:initial-uds-variables}
 
     \\ \hline
@@ -23,7 +23,7 @@ Details of the initial variables obtained from the National Alzheirmer's Coordin
     \\ \hline
     \endfirsthead
 
-    \caption[]{List of the initially selected accessible data variables, continued}
+    \caption[]{List of the initially selected accessible data variables from the NACC UDS, continued}
     \\ \hline
     \textbf{Form} & \textbf{Variable Name} & \textbf{Variable Type} & \textbf{Description}
     \\ \hline                        
@@ -197,10 +197,10 @@ Details of the initial variables obtained from the National Alzheirmer's Coordin
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1.0\textwidth]{figures/appendix/class-distribution-nacc.pdf}
-    \caption{The size of the data and the class distribution in the NACC UDS training and testing datasets}
+    \caption{The size of the data and the class distribution in the NACC training and testing datasets}
     \begin{minipage}{\textwidth}
       \footnotesize The diagram demonstrate the hierarchical selection of data and the data selection criteria in different classification and prediction tasks.\newline
-      The training and testing datasets split was done based on Alzheimer's disease research centers (\acrshort{ADRCs}) with 20\% ratio. The training dataset was collected from ADRCs that were not involved in the collection of the holdout test dataset. The training and testing ADCRs in the NC vs. CI tasks are the same in the following CIND vs. Dementia and AD vs. non-AD tasks.\newline
+      The training and testing datasets split was done based on Alzheimer's disease research centers (\acrshort{ADRCs}) with 20\% ratio. The training dataset was collected from ADRCs that were not involved in the collection of the holdout testing dataset. The training and testing ADCRs in the NC vs. CI tasks are the same in the following CIND vs. Dementia and AD vs. non-AD tasks.\newline
       The high prevalence of cognitive impairment (\acrshort{CI}) is because subjects participated in NACC study are actively looking for medical advice due to concern on Cognitive deterioration.
     \end{minipage}
     \label{fig:nacc-data-stat}
@@ -472,7 +472,7 @@ This section provides an extended report of the performance of the LR models. Ta
     \newcolumntype{C}{>{\centering\arraybackslash}X}
     \begin{tabularx}{\textwidth}{|C|C|C|C|}
     \hline
-        \textbf{Metric} & \textbf{Internal Cross-Validation} & \textbf{NACC Cross-Center Validation} & \textbf{ADNI External Validation} \\ \hline
+        \textbf{Metric} & \textbf{Internal Cross-Validation} & \textbf{NACC Cross-center Validation} & \textbf{ADNI External Validation} \\ \hline
         F1-score & 0.848 & 0.823 & 0.833 \\ \hline
         G-mean & 0.842 & 0.809 & 0.820 \\ \hline
         Precision & 0.922 & 0.874 & 0.953 \\ \hline
@@ -493,7 +493,7 @@ This section provides an extended report of the performance of the LR models. Ta
     \newcolumntype{C}{>{\centering\arraybackslash}X}
     \begin{tabularx}{\textwidth}{|C|C|C|C|}
     \hline
-        \textbf{Metric} & \textbf{Internal Cross-Validation} & \textbf{NACC Cross-Center Validation} & \textbf{ADNI External Validation} \\ \hline
+        \textbf{Metric} & \textbf{Internal Cross-Validation} & \textbf{NACC Cross-center Validation} & \textbf{ADNI External Validation} \\ \hline
         F1-score & 0.842 & 0.837 & 0.777 \\ \hline
         G-mean & 0.828 & 0.826 & 0.840 \\ \hline
         Precision & 0.857 & 0.802 & 0.690 \\ \hline
@@ -514,7 +514,7 @@ This section provides an extended report of the performance of the LR models. Ta
     \newcolumntype{C}{>{\centering\arraybackslash}X}
     \begin{tabularx}{\textwidth}{|C|C|C|C|}
     \hline
-        \textbf{Metric} & \textbf{Internal Cross-Validation} & \textbf{NACC Cross-Center Validation} & \textbf{ADNI External Validation} \\ \hline
+        \textbf{Metric} & \textbf{Internal Cross-Validation} & \textbf{NACC Cross-center Validation} & \textbf{ADNI External Validation} \\ \hline
         F1-score & 0.747 & 0.772 & 0.791 \\ \hline
         G-mean & 0.770 & 0.787 & 0.777 \\ \hline
         Precision & 0.774 & 0.829 & 0.844 \\ \hline
@@ -535,7 +535,7 @@ This section provides an extended report of the performance of the LR models. Ta
     \newcolumntype{C}{>{\centering\arraybackslash}X}
     \begin{tabularx}{\textwidth}{|C|C|C|C|}
     \hline
-        \textbf{Metric} & \textbf{Internal Cross-Validation} & \textbf{NACC Cross-Center Validation} & \textbf{ADNI External Validation} \\ \hline
+        \textbf{Metric} & \textbf{Internal Cross-Validation} & \textbf{NACC Cross-center Validation} & \textbf{ADNI External Validation} \\ \hline
         F1-score & 0.773 & 0.811 & 0.715 \\ \hline
         G-mean & 0.757 & 0.803 & 0.780 \\ \hline
         Precision & 0.842 & 0.887 & 0.655 \\ \hline
@@ -556,7 +556,7 @@ This section provides an extended report of the performance of the LR models. Ta
     \newcolumntype{C}{>{\centering\arraybackslash}X}
     \begin{tabularx}{\textwidth}{|C|C|C|}
     \hline
-        \textbf{Metric} & \textbf{Internal Cross-Validation} & \textbf{NACC Cross-Center Validation} \\ \hline
+        \textbf{Metric} & \textbf{Internal Cross-Validation} & \textbf{NACC Cross-center Validation} \\ \hline
         F1-score & 0.725 & 0.706 \\ \hline
         G-mean & 0.702 & 0.670 \\ \hline
         Precision & 0.765 & 0.735 \\ \hline
@@ -571,8 +571,8 @@ This section provides an extended report of the performance of the LR models. Ta
     \label{table:lr-complete-perf-task5-apdx}
 \end{table}
 
-\section{Supplementary Results of Model Explanation}\label{sec:xai-apdx}
-This section provides supplementary results related to the model explanation phase of this study. It is intended to support the findings that were discussed previously in the results and analysis chapter. The feature importance in the NACC cross-center validation and the ADNI external validation for all classification tasks is presented in Figures \ref{figure:summary-plot-task1-apdx} to \ref{figure:summary-plot-task5-apdx} together with summary plots demonstrating the direction of the impact of the features. Figures \ref{figure:dice-nacc-task1-apdx} to \ref{figure:dice-nacc-task4-apdx} display the quantity (the number of counterfactual examples generated per instance) and the sparsity (the number of features needed to be changed to generate the counterfactual examples) of the counterfactual explanation in the NACC cross-center validation, which can be compared with the corresponding metrics in the ADNI external validation that were provided previously in the results and analysis chapter. Tables \ref{table:cfe-adni-task1-apdx} to \ref{table:cfe-adni-task4-apdx} demonstrate samples of counterfactual examples generated in the ADNI external validation for all classification tasks to illustrate the feature changes required to reverse the predicted outcomes. The Diverse Counterfactual Explanations (\acrshort{DiCE}) with the \acrshort{KD-Tree} (K-dimensional tree) search method was used to generate the counterfactual examples for all classification tasks except the future CIND vs. dementia prediction task which used the random search method.
+\section{Supplementary Results of Model Explainability}\label{sec:xai-apdx}
+This section provides supplementary results related to the model explainability phase of this study. It is intended to support the findings that were discussed previously in the results and analysis chapter. The feature importance in the NACC cross-center validation and the ADNI external validation for all classification tasks is presented in Figures \ref{figure:summary-plot-task1-apdx} to \ref{figure:summary-plot-task5-apdx} together with summary plots demonstrating the direction of the impact of the features. Figures \ref{figure:dice-nacc-task1-apdx} to \ref{figure:dice-nacc-task4-apdx} display the quantity (the number of counterfactual examples generated per instance) and the sparsity (the number of features needed to be changed to generate the counterfactual examples) of the counterfactual explanation in the NACC cross-center validation, which can be compared with the corresponding metrics in the ADNI external validation that were provided previously in the results and analysis chapter. Tables \ref{table:cfe-adni-task1-apdx} to \ref{table:cfe-adni-task4-apdx} demonstrate samples of counterfactual examples generated in the ADNI external validation for all classification tasks to illustrate the feature changes required to reverse the predicted outcomes. The Diverse Counterfactual Explanations (\acrshort{DiCE}) with the \acrshort{KD-Tree} (K-dimensional tree) search method was used to generate the counterfactual examples for all classification tasks except the future CIND vs. dementia prediction task which used the random search method.
 
 \begin{figure}[H]
     \centering
