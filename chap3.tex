@@ -32,10 +32,14 @@ The main dataset used in this study is the Uniform Data Set (\acrshort{UDS}) pro
 
 The NACC UDS is distinguished by its standardized longitudinal data collection, which captures information over multiple visits from large and diverse populations across multiple ADRCs in the United States. It is publicly available for research purposes and has been used in recent studies focused on developing predictive machine learning models \cite{abbas2024Explainable, Pang2023Predicting, Ren2023Improving}. It provides a wide range of easily accessible data, including demographic, health history, lifestyle factors, and cognitive assessments collected during routine medical examinations. This variety allows for comprehensive analysis and makes the dataset practical for clinical applications. Additionally, the NACC UDS encompasses a broad spectrum of cognitive status and various types of dementia, with diagnoses being recorded over time at multiple visits. This enables the development of models capable of predicting the risk of different types of dementia in the early stages. Moreover, data collected from ADRCs in different geographic regions with unique demographic, socioeconomic, and healthcare characteristics offers an opportunity to test the model’s ability to generalize across diverse clinical environments. These advantages collectively make the NACC UDS more practical for this study than other commonly used datasets. This decision supports the objectives of this study to develop generalizable and accessible models for the early prediction and intervention of cognitive impairment in clinical practice.
 
+\hl{In addition to these advantages, the demographic composition of the NACC UDS cohort was examined. The subjects are mostly older adults, typically aged between about 60 and 80 years. The majority of subjects are female, and the level of education is relatively high, with a mean of around 15 years. The data are restricted to the United States, and some racial and ethnic groups are likely to be underrepresented. This pattern is commonly noted in dementia cohorts} \cite{Lennon2021Black, Nianogo2022Risk}. \hl{The NACC UDS is also a convenience sample of subjects attending Alzheimer's disease research centers, which explains the high prevalence of cognitive impairment in the data. This demographic skew has a direct impact on the generalizability of the models, since a model that learns from such data may not behave equally well when it meets populations of different demographic and socioeconomic backgrounds.}
+
 \subsection{Alzheimer's Disease Neuroimaging Initiative Dataset}
 The Alzheimer's Disease Neuroimaging Initiative (\acrshort{ADNI}) \cite{Weiner2024Overview} is a large-scale public-private partnership initiated in 2004 to define the progression of Alzheimer's disease (\acrshort{AD}). The study collects longitudinal data from healthy controls, individuals with mild cognitive impairment (\acrshort{MCI}), and AD patients. Data are gathered through a standardized battery of assessments at regular intervals, which includes accessible and low-cost features like demographics, medical history, and cognitive scale scores. The initiative has evolved through several phases (ADNI-1, ADNI-GO, ADNI-2, and ADNI-3), each expanding the study population. This dataset is a crucial resource for the external validation of the models to assess their generalizability across different studies.
 
 The decision to use the ADNI dataset for external validation was made based on the research objectives. First, the ADNI initiative collects longitudinal data comprising the same categories of easily accessible features that were used in the models trained on the NACC UDS data. Second, the ADNI dataset is open access for researchers and has been widely used in dementia research. A similar study used the NACC UDS dataset for training and the ADNI dataset for external validation \cite{abbas2024Explainable}. More importantly, the ADNI dataset represents an independent study population collected under different protocols. Therefore, using it for testing provides a thorough assessment of the generalizability of the model, which is an important objective of this research. Validating against a standardized and external dataset is a crucial practice to confirm that a model's performance is reliable and not limited to the specific characteristics of the original training data.
+
+\hl{The demographic composition of the ADNI data was also examined. Compared with the NACC UDS, the ADNI subjects show a similar pattern of older age, with a mean in the low seventies, and a comparably high level of education, with a mean of about 16 years. However, the ADNI cohort is more balanced in sex and even leans slightly towards male participants, unlike the female majority of the NACC UDS. Similar to the NACC UDS, the majority of the ADNI participants are volunteers based in the United States} \cite{Weiner2024Overview}. \hl{This limited representativeness should be taken into account when the generalizability of the externally validated models is interpreted.}
 
 \section{Hierarchical Classification Tasks}
 One of the objectives of this study is to develop cost-effective machine learning models for the early prediction of CI. To achieve this objective, it is crucial to identify the current and future cognitive status as normal, cognitively impaired, or dementia. Identifying the current and future status of the subjects' cognitive ability allows for timely and precise intervention plans. It appears that this is a complex classification problem that includes classifying CI at two different time points and across three different overlapping and imbalanced cognitive stages. Using easily accessible data adds another layer of complication to the classification problem, as it makes it difficult for the classification models to differentiate multiple classes in such complex data domains. 
@@ -52,7 +56,7 @@ To simplify the classification problem, the main problem was segmented into five
     \label{fig:classification-tasks}
 \end{figure}
 
-For the current cognitive status classification, both input features and target labels were derived from the ' baseline visit of the subjects. The classification task was then divided into two hierarchical tasks. First, a model was trained to differentiate NC subjects from all CI subjects. Second, another model was trained only on impaired subjects to further classify them as CIND or dementia. Demographic comparisons of the three cognitive statuses are summarized in Table~\ref{table:ci-classification-demographics}.
+For the current cognitive status classification, both input features and target labels were derived from the ' baseline visit of the subjects. The classification task was then divided into two hierarchical tasks. First, a model was trained to differentiate NC subjects from all CI subjects. Second, another model was trained only on impaired subjects to further classify them as CIND or dementia. \hl{Demographic comparisons of the three cognitive statuses are summarized in Table~\ref{table:ci-classification-demographics} for NACC UDS dataset and Table~\ref{table:adni-classification-demographics} for ADNI dataset.}
 
 \begin{table}[htbp]
 \centering
@@ -67,14 +71,14 @@ Characteristic & NC & CIND & Dementia & Total \\
  & (n=21,919) & (n=14,445) & (n=17,151) & (N=53,515) \\
 \midrule
 \textbf{Age, years} \\
-\quad Mean ± \acrshort{SD} & 69 ± 10.8 & 72 ± 9.5 & 72 ± 10.4 & 71 ± 10.4 \\
+\quad Mean ± \acrshort{SD} & 69.4 ± 10.8 & 71.9 ± 9.4 & 72.3 ± 10.4 & 71.0 ± 10.4 \\
 \\
 \textbf{Sex} \\
 \quad Female & 14,361 (65.5\%) & 7,468 (51.7\%) & 8,879 (51.8\%) & 30,708 (57.4\%) \\
 \quad Male & 7,558 (34.5\%) & 6,977 (48.3\%) & 8,272 (48.2\%) & 22,807 (42.6\%) \\
 \\
 \textbf{Education, years} \\
-\quad Mean ± SD & 16 ± 3.0 & 15 ± 3.5 & 15 ± 3.7 & 15 ± 3.4 \\
+\quad Mean ± SD & 15.8 ± 3.0 & 15.2 ± 3.4 & 14.5 ± 3.7 & 15.2 ± 3.4 \\
 \\
 \textbf{Marital Status} \\
 \quad Married & 12,819 (58.5\%) & 9,050 (62.7\%) & 11,877 (69.2\%) & 33,746 (63.1\%) \\
@@ -83,7 +87,36 @@ Characteristic & NC & CIND & Dementia & Total \\
 \end{tabular}
 \end{table}
 
-The same hierarchical structure was designed for the early prediction of future cognitive status. However, specific criteria were applied for the inclusion of subjects for these prediction tasks. Only subjects with a baseline visit and a follow-up visit five years later were included. The input data for these tasks were extracted from the baseline visits, whereas the target classes were based on the diagnosis at a follow-up visit made approximately five years later. To accommodate for variability in visit timelines, a time frame of six months before or after the five-year mark was used. Subjects whose follow-up visits did not occur within this time frame were excluded. This future prediction task was also divided into two binary tasks: one for predicting future NC versus future CI status, and a second to differentiate future CIND from future dementia. Table~\ref{table:ci-prediction-demographics} presents the demographics of the subjects used in these prediction tasks.
+\begin{table}[htbp]
+\centering
+\caption{Demographic characteristics of the ADNI subjects used in the current cognitive status classification task}
+\label{table:adni-classification-demographics}
+\footnotesize
+\begin{tabular}{lcccc}
+\toprule
+ & \multicolumn{4}{c}{Cognitive Status} \\
+\cmidrule{2-5}
+Characteristic & NC & CIND & Dementia & Total \\
+ & (n=514) & (n=832) & (n=429) & (N=1,775) \\
+\midrule
+\textbf{Age, years} \\
+\quad Mean ± \acrshort{SD} & 73.4 ± 6.4 & 73.3 ± 7.5 & 74.5 ± 7.5 & 73.6 ± 7.2 \\
+\\
+\textbf{Sex} \\
+\quad Female & 274 (53.3\%) & 327 (39.3\%) & 184 (42.9\%) & 785 (44.2\%) \\
+\quad Male & 240 (46.7\%) & 505 (60.7\%) & 245 (57.1\%) & 990 (55.8\%) \\
+\\
+\textbf{Education, years} \\
+\quad Mean ± SD & 16.4 ± 2.6 & 16.1 ± 2.8 & 15.4 ± 2.9 & 16.0 ± 2.8 \\
+\\
+\textbf{Marital Status} \\
+\quad Married & 335 (65.2\%) & 633 (76.1\%) & 360 (83.9\%) & 1,328 (74.8\%) \\
+\quad Other & 179 (34.8\%) & 199 (23.9\%) & 69 (16.1\%) & 447 (25.2\%) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The same hierarchical structure was designed for the early prediction of future cognitive status. However, specific criteria were applied for the inclusion of subjects for these prediction tasks. Only subjects with a baseline visit and a follow-up visit five years later were included. The input data for these tasks were extracted from the baseline visits, whereas the target classes were based on the diagnosis at a follow-up visit made approximately five years later. To accommodate for variability in visit timelines, a time frame of six months before or after the five-year mark was used. Subjects whose follow-up visits did not occur within this time frame were excluded. This future prediction task was also divided into two binary tasks: one for predicting future NC versus future CI status, and a second to differentiate future CIND from future dementia. \hl{Table~\ref{table:ci-prediction-demographics} and Table~\ref{table:adni-prediction-demographics} summarize the demographic characteristics of the subjects included in the future cognitive status prediction tasks for the NACC UDS and ADNI datasets, respectively.}
 
 \begin{table}[htbp]
 \centering
@@ -98,18 +131,47 @@ Characteristic & NC & CIND & Dementia & Total \\
  & (n=6,612) & (n=2,334) & (n=3,399) & (N=12,345) \\
 \midrule
 \textbf{Age, years} \\
-\quad Mean ± SD & 70 ± 9.2 & 73 ± 9.2 & 73 ± 9.6 & 71 ± 9.4 \\
+\quad Mean ± SD & 70.2 ± 9.2 & 72.9 ± 9.2 & 72.6 ± 9.6 & 71.4 ± 9.4 \\
 \\
 \textbf{Sex} \\
 \quad Female & 4,354 (65.8\%) & 1,208 (51.8\%) & 1,715 (50.5\%) & 7,277 (58.9\%) \\
 \quad Male & 2,258 (34.2\%) & 1,126 (48.2\%) & 1,684 (49.5\%) & 5,068 (41.1\%) \\
 \\
 \textbf{Education, years} \\
-\quad Mean ± SD & 16 ± 2.8 & 16 ± 3.2 & 15 ± 3.5 & 16 ± 3.1 \\
+\quad Mean ± SD & 16.1 ± 2.8 & 15.6 ± 3.2 & 15.2 ± 3.5 & 15.8 ± 3.1 \\
 \\
 \textbf{Marital Status} \\
 \quad Married & 3,918 (59.3\%) & 1,426 (61.1\%) & 2,522 (74.2\%) & 7,866 (63.7\%) \\
 \quad Other & 2,694 (40.7\%) & 908 (38.9\%) & 877 (25.8\%) & 4,479 (36.3\%) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Demographic characteristics of the ADNI subjects used in the five years cognitive status prediction task}
+\label{table:adni-prediction-demographics}
+\footnotesize
+\begin{tabular}{lcccc}
+\toprule
+ & \multicolumn{4}{c}{Cognitive Status} \\
+\cmidrule{2-5}
+Characteristic & NC & CIND & Dementia & Total \\
+ & (n=348) & (n=309) & (n=169) & (N=826) \\
+\midrule
+\textbf{Age, years} \\
+\quad Mean ± \acrshort{SD} & 72.2 ± 6.5 & 72.3 ± 7.2 & 73.4 ± 6.4 & 72.4 ± 6.8 \\
+\\
+\textbf{Sex} \\
+\quad Female & 190 (54.6\%) & 117 (37.9\%) & 72 (42.6\%) & 379 (45.9\%) \\
+\quad Male & 158 (45.4\%) & 192 (62.1\%) & 97 (57.4\%) & 447 (54.1\%) \\
+\\
+\textbf{Education, years} \\
+\quad Mean ± SD & 16.7 ± 2.5 & 16.1 ± 2.7 & 15.9 ± 2.8 & 16.3 ± 2.7 \\
+\\
+\textbf{Marital Status} \\
+\quad Married & 233 (67.0\%) & 230 (74.4\%) & 137 (81.1\%) & 600 (72.6\%) \\
+\quad Other & 115 (33.0\%) & 79 (25.6\%) & 32 (18.9\%) & 226 (27.4\%) \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -144,14 +206,14 @@ Characteristic & AD & Non AD & Total \\
  & (n=18,201) & (n=13,441) & (N=31,642) \\
 \midrule
 \textbf{Age, years} \\
-\quad Mean ± SD & 74 ± 9.6 & 70 ± 10.1 & 72 ± 10.0 \\
+\quad Mean ± SD & 73.7 ± 9.6 & 70.0 ± 10.1 & 72.1 ± 10.0 \\
 \\
 \textbf{Sex} \\
 \quad Female & 9,923 (54.5\%) & 6,448 (48.0\%) & 16,371 (51.7\%) \\
 \quad Male & 8,278 (45.5\%) & 6,993 (52.0\%) & 15,271 (48.3\%) \\
 \\
 \textbf{Education, years} \\
-\quad Mean ± SD & 15 ± 3.7 & 15 ± 3.5 & 15 ± 3.6 \\
+\quad Mean ± SD & 14.7 ± 3.7 & 14.9 ± 3.5 & 14.8 ± 3.6 \\
 \\
 \textbf{Marital Status} \\
 \quad Married & 12,162 (66.8\%) & 8,794 (65.4\%) & 20,956 (66.2\%) \\
@@ -523,7 +585,7 @@ The training dataset was utilized in the internal validation phase to develop an
     \label{fig:model-validation}
 \end{figure}
 
-A deliberate selection of the model performance metrics is important for a reasonable evaluation of the classification models' performance. It can be observed that the datasets of all the binary classification tasks exhibit an imbalanced class distribution. Consequently, this study utilized a combination of performance metrics that account for class imbalance, such as sensitivity, specificity, G-mean, Area Under the Curve (\acrshort{AUC}), and F1-score. This is important to ensure a fair assessment of model performance in both majority and minority classes. In the medical field, it may also be more expensive to misclassify one class than the other. For example, classifying cognitively impaired cases as normal cases has a greater impact than classifying normal cases as cognitively impaired. Therefore, it is advisable to assess the true positive rate of the classification model. The distribution of the target classes in the NACC UDS and ADNI datasets for all classification tasks is provided in Figure~\ref{fig:nacc-data-stat} and Figure~\ref{fig:adni-data-stat} in the appendix.
+A deliberate selection of the model performance metrics is important for a reasonable evaluation of the classification models' performance. It can be observed that the datasets of all the binary classification tasks exhibit an imbalanced class distribution. Consequently, this study utilized a combination of performance metrics that account for class imbalance, such as sensitivity, specificity, G-mean, Area Under the Curve (\acrshort{AUC}), and F1-score. This is important to ensure a fair assessment of model performance in both majority and minority classes. In the medical field, it may also be more expensive to misclassify one class than the other. For example, classifying cognitively impaired cases as normal cases has a greater impact than classifying normal cases as cognitively impaired. Therefore, it is advisable to assess the true positive rate of the classification model. The distribution of the target classes in the NACC UDS and ADNI datasets for all classification tasks is provided in Figure~\ref{fig:nacc-data-stat} and Figure~\ref{fig:adni-data-stat} in the appendix, respectively.
 
 In addition to evaluating the generalizability of the selected models, it is important to ensure that the models produce reliable probabilities of the targeted cognitive status or CI type (outcome). There is a possibility that even though a model with high classification accuracy could predict overly confident or conservative risk probabilities. In clinical application, an accurate estimate of how the outcome could possibly occur is required to make the right decision to manage any potential risk. Therefore, it is crucial that the predicted probability of the model approximates the actual likelihood of the outcome. For example, if a model predicts that there is an 80\% chance of cognitive impairment, about 80\% of subjects who get that prediction should have cognitive impairment.
 
