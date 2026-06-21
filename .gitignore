@@ -13,3 +13,5 @@
 *.out
 *.toc
 *.synctex(busy)
+*.acr
+*.alg
