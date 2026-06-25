@@ -171,9 +171,9 @@ Common approaches and conclusions have been observed in the reviewed studies. An
 \multicolumn{5}{p{1.5\textwidth}}{\footnotesize
 The asterisk (*) in the Models column indicates the best-performing model in the corresponding study.
 % \begin{enumerate}[label=\alph*),leftmargin=0.3cm]
-% \item AGES-Reykjavik: Age, Gene/Environment Susceptibility Reykjavik Study; CLAS: China Longitudinal Aging Study; JPIIGH EMR: John Paul II Institute of Geriatrics and Gerontology Electronic Medical Records; KLOSA: Korean Longitudinal Study of Aging; NACC: National Alzheimer’s Coordinating Center; NHANES: National Health and Nutrition Examination Survey; NHIS-NSC: National Health Insurance Service-National Sample Cohort; OLDW: OptumLabs Data Warehouse; OneFlorida+: OneFlorida Clinical Research Consortium; OPTIMA: Oxford Project to Investigate Memory and Ageing; SCHS DB: Show Chwan Health System Database.
-% \item APOE: Apolipoprotein E; CDR: Clinical Dementia Rating; FAQ: Functional Activities Questionnaire; GDS: Geriatric Depression Scale; IADL: Instrumental Activities of Daily Living; MMSE: Mini-Mental State; NPI: Neuropsychiatric Inventory; NPI-Q: Neuropsychiatric Inventory Questionnaire.
-% \item AdaBoost: Adaptive Boosting; ANN: Artificial Neural Network; C\&R Tree: Classification and Regression Tree; CatBoost: Categorical Boosting; DNN: Deep Neural Network; DT: Decision Tree; GB: Gradient Boosting; GBT: Gradient-Boosted Trees; GLM: Generalized Linear Model; GPC: Gaussian Process Classification; KNN: K-Nearest Neighbors; LDA: Linear Discriminant Analysis; lightGBM: Light Gradient-Boosting Machine; LogitBoost: Logistic Boosting; LR: Logistic Regression; LSTM: Long Short-Term Memory; MLP: Multi-layer Perceptron; NB: Naïve Bayes; QDA: Quadratic Discriminant Analysis; RF: Random Forest; SGB: Stochastic Gradient Boosting; SVM: Support Vector Machine; XGBoost: eXtreme Gradient Boosting.
+% \item AGES-Reykjavik: Age, Gene/Environment Susceptibility Reykjavik Study; CHARLS: China Health and Retirement Longitudinal Study; CLAS: China Longitudinal Aging Study; CLHLS: Chinese Longitudinal Healthy Longevity Survey; JPIIGH EMR: John Paul II Institute of Geriatrics and Gerontology Electronic Medical Records; KLOSA: Korean Longitudinal Study of Aging; NACC: National Alzheimer’s Coordinating Center; NHANES: National Health and Nutrition Examination Survey; NHIS-NSC: National Health Insurance Service-National Sample Cohort; OLDW: OptumLabs Data Warehouse; OneFlorida+: OneFlorida Clinical Research Consortium; SCHS DB: Show Chwan Health System Database.
+% \item ADL: Activities of Daily Living; APOE: Apolipoprotein E; CDR: Clinical Dementia Rating; FAQ: Functional Activities Questionnaire; GDS: Geriatric Depression Scale; IADL: Instrumental Activities of Daily Living; MMSE: Mini-Mental State; NPI: Neuropsychiatric Inventory; NPI-Q: Neuropsychiatric Inventory Questionnaire.
+% \item AdaBoost: Adaptive Boosting; ANN: Artificial Neural Network; C\&R Tree: Classification and Regression Tree; CatBoost: Categorical Boosting; DNN: Deep Neural Network; DT: Decision Tree; GB: Gradient Boosting; GBC: Gradient Boosting Classifier; GBR: Gradient Boosting Regressor; GBT: Gradient-Boosted Trees; GLM: Generalized Linear Model; GPC: Gaussian Process Classification; KNN: K-Nearest Neighbors; LDA: Linear Discriminant Analysis; lightGBM: Light Gradient-Boosting Machine; LogitBoost: Logistic Boosting; LR: Logistic Regression; LSTM: Long Short-Term Memory; MLP: Multi-layer Perceptron; NB: Naïve Bayes; QDA: Quadratic Discriminant Analysis; RF: Random Forest; SGB: Stochastic Gradient Boosting; SVM: Support Vector Machine; XGBoost: eXtreme Gradient Boosting.
 % \item Acc: Accuracy; AUC: Area Under the Curve.
 % \end{enumerate}
 }
@@ -199,9 +199,6 @@ The asterisk (*) in the Models column indicates the best-performing model in the
 \hline
 
 \cite{Danso2021Developing} & SHARE & Sociodemographics, Self-reported medical history, Lifestyle & Transfer-learning using RF and XGBoost* & Predicting dementia up to 14 years: AUC=0.960 \\ 
-\hline
-
-\cite{Vyas2022Identifying} & OPTIMA & Demographics, Health data, Medical history, Physical exams, Neuropsychological assessments, Cognitive tests, Functional scales & DT, RF* & Dementia vs. NC: Acc=0.930 \newline NC vs. Minimal/Mild vs. Moderate/Severe: Acc=0.860 \\ 
 \hline
 
 \cite{Bucholc2023Hybrid} & NACC & Cognitive/functional tests, Cognitive trajectory classes & Ensemble, \acrshort{KNN}, LR, RF*, SVM & Predicting conversion from MCI to dementia: \newline 3 visits input data: Acc=0.850, AUC=0.601 \newline 4 visits input data: Acc=0.875, AUC=0.756 \\ 
@@ -244,6 +241,12 @@ The asterisk (*) in the Models column indicates the best-performing model in the
 \hline
 
 \cite{Ren2025Identifying} & NACC & Demographics, Patient history, Behavioral surveys, Neuropsychological testing, Genetic testing, CDR & Clustering with auto encoder, GB, LR, RF, Semi-supervised model* & Classifying CI: AUC=0.719 \\ 
+\hline
+
+\cite{Ren2025Using} & CLHLS & Demographics, Life behaviors, ADL, Disease history, Routine blood and plasma biomarkers, MMSE & Balanced RF*, LR, RF, SVM, XGBoost & Predicting cognitive impairment at 3-year follow-up: Acc=0.885, AUC=0.809 \\
+\hline
+
+\cite{Ye2025Predicting} & CHARLS & Education, Childhood friendship, Age, IADL, Hukou type, Mobility, Sleep duration, Gender, Residence, Social participation & GBC*, GBR & Classifying CI: AUC=0.832 \\
 \hline
 
 \end{longtable}
