@@ -14,6 +14,11 @@
 
 \usepackage{soul}
 \sethlcolor{yellow}
+\usepackage{pifont}
+\newcommand{\yesmark}{\ding{52}}
+\newcommand{\nomark}{\ding{56}}
+\newcommand{\partialmark}{\rule[0.4ex]{1.4ex}{1.4pt}}
+\newcommand{\rh}[1]{\rotatebox[origin=c]{90}{\hspace{4pt}\textbf{#1}\hspace{4pt}}}
 %To remove spacing before itemize starts
 %the 'leftmargin=2cm' option is to match the itemize indentation in MS Word
 %can be removed/edit accordingly
@@ -108,7 +113,7 @@ Lastly, this work is dedicated to the memory of my grandmother, whose life and s
 \include{apdx1}
 \include{glossary}
 \end{appendices}
-resume the ToC depth
+% resume the ToC depth
 \addtocontents{toc}{\protect\setcounter{tocdepth}{3}}
 \addtocontents{toc}{\protect\vspace{16pt}}
 

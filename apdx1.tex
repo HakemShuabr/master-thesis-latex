@@ -677,7 +677,7 @@ This section provides supplementary results related to the model explainability 
 
 % ----------------------------------------------------
 
-\begin{table}[!ht]
+\begin{table}[H]
     \centering
     \caption{An illustration of counterfactual examples generated for a random subject classified as cognitive impairment (CI) to reverse the estimated outcome to normal cognition (NC)}
     \begin{tabular}{|c|c|c|c|c|}
@@ -701,7 +701,7 @@ This section provides supplementary results related to the model explainability 
     \label{table:cfe-adni-task1-apdx}
 \end{table}
 
-\begin{table}[!ht]
+\begin{table}[H]
     \centering
     \caption{An illustration of counterfactual examples generated for a random subject classified as dementia to reverse the estimated outcome to cognitive impairment but not dementia (\acrshort{CIND})}
     \begin{tabular}{|c|c|c|c|c|}
@@ -724,7 +724,7 @@ This section provides supplementary results related to the model explainability 
     \label{table:cfe-adni-task2-apdx}
 \end{table}
 
-\begin{table}[!ht]
+\begin{table}[H]
     \centering
     \caption{An illustration of counterfactual examples generated for a random subject with a future risk of cognitive impairment (CI) to reverse the estimated outcome to normal cognition (NC)}
     \begin{tabular}{|c|c|c|c|c|}
@@ -745,7 +745,7 @@ This section provides supplementary results related to the model explainability 
     \label{table:cfe-adni-task3-apdx}
 \end{table}
 
-\begin{table}[!ht]
+\begin{table}[H]
     \centering
     \caption{An illustration of counterfactual examples generated for a random subject with a future risk of dementia to reverse the estimated outcome to cognitive impairment but not dementia (\acrshort{CIND})}
     \begin{tabular}{|c|c|c|c|c|}
@@ -766,3 +766,79 @@ This section provides supplementary results related to the model explainability 
     \end{tabular}
     \label{table:cfe-adni-task4-apdx}
 \end{table}
+
+\section{Summary of the Comparative Analysis with Existing Literature}\label{sec:compare-summary-apdx}
+This section provides a summary of the comparison between this study and the reviewed studies discussed in Section~\ref{sec:performance-comparison}. The comparison in Table~\ref{table:compare-summary} is presented across the main dimensions of methodological quality that affect the reliability, cost-effectiveness, and the clinical utility of the developed models.
+
+\setlength{\tabcolsep}{4pt}
+\begin{longtable}{|M{0.18\textwidth}|M{0.40\textwidth}|M{0.06\textwidth}|M{0.06\textwidth}|M{0.06\textwidth}|M{0.06\textwidth}|M{0.06\textwidth}|}
+\caption{Summary of the comparative analysis between this study and the reviewed literature across the main dimensions of methodological quality}
+\label{table:compare-summary} \\
+\hline
+\textbf{Study} & \textbf{Key Features} & \rh{External Validation} & \rh{Calibration / DCA} & \rh{Class Imbalance Handling} & \rh{Class Overlap Analysis} & \rh{Computational Cost} \\
+\hline
+\endfirsthead
+
+\caption[]{Summary of the comparative analysis between this study and the reviewed literature, continued} \\
+\hline
+\textbf{Study} & \textbf{Key Features} & \rh{External Validation} & \rh{Calibration / DCA} & \rh{Class Imbalance Handling} & \rh{Class Overlap Analysis} & \rh{Computational Cost} \\
+\hline
+\endhead
+
+\hline
+\multicolumn{7}{r}{\textit{Continued on next page}} \\
+\endfoot
+
+\hline
+\multicolumn{7}{p{\textwidth}}{\footnotesize ADL: activities of daily living; CDR: clinical dementia rating; DCA: decision curve analysis; EHR: electronic health records; IADL: instrumental activities of daily living; MMSE: Mini-Mental State Examination. The check mark (\yesmark) indicates that the dimension was addressed or reported, the cross (\nomark) indicates that it was not, and the dash (\partialmark) indicates a partial case. In the external validation column, a partial case refers to a prospective validation on the same cohort rather than a separate external dataset, while in the computational cost column it refers to a study that reported only the computation time of the model.} \\
+\endlastfoot
+
+\textbf{This Study} & Demographic, functional (IADL); CDR for subtype & \yesmark & \yesmark & \yesmark & \yesmark & \yesmark \\
+\hline
+\cite{Gurevich2017Neuropsychological} & Demographic, neuropsychological tests & \nomark & \nomark & \nomark & \nomark & \nomark \\
+\hline
+\cite{Ben2020Predicting} & EHR: diagnoses, medications, notes & \nomark & \nomark & \nomark & \nomark & \nomark \\
+\hline
+\cite{Park2020Machine} & Claims and EHR: labs, diagnoses, medications & \nomark & \nomark & \nomark & \nomark & \nomark \\
+\hline
+\cite{Davoudi2021Classifying} & Digital clock-drawing test & \nomark & \nomark & \yesmark & \nomark & \nomark \\
+\hline
+\cite{Yamada2022Characteristics} & Drawing-test features & \nomark & \nomark & \nomark & \nomark & \nomark \\
+\hline
+\cite{Maito2022Classification} & Cognitive and social-cognition tests & \nomark & \nomark & \yesmark & \nomark & \nomark \\
+\hline
+\cite{Pang2023Predicting} & Demographic, neuropsychological tests, CDR & \nomark & \nomark & \nomark & \nomark & \nomark \\
+\hline
+\cite{Li2023Early} & EHR: diagnoses, medications, labs, vitals & \nomark & \nomark & \nomark & \nomark & \nomark \\
+\hline
+\cite{Li2023Machine} & Demographic, lifestyle, labs, cognitive tests & \nomark & \yesmark & \nomark & \nomark & \nomark \\
+\hline
+\cite{Bucholc2023Hybrid} & Cognitive and functional tests & \nomark & \nomark & \yesmark & \nomark & \nomark \\
+\hline
+\cite{Twait2023Dementia} & Demographic, lifestyle, MMSE & \nomark & \yesmark & \yesmark & \nomark & \nomark \\
+\hline
+\cite{Ren2023Improving} & Demographic, history, MMSE & \nomark & \nomark & \yesmark & \nomark & \nomark \\
+\hline
+\cite{Yue2023Explainable} & Demographic, lifestyle, history & \nomark & \nomark & \yesmark & \nomark & \partialmark \\
+\hline
+\cite{abbas2024Explainable} & Demographic, history, CDR & \yesmark & \nomark & \nomark & \nomark & \nomark \\
+\hline
+\cite{Cui2024Prediction} & Demographic, health, ADL and IADL & \yesmark & \yesmark & \nomark & \nomark & \nomark \\
+\hline
+\cite{Sharma2024Leveraging} & Demographic, comorbidities & \nomark & \nomark & \yesmark & \nomark & \nomark \\
+\hline
+\cite{Oh2024Multivariable} & Sociodemographic, health, functional & \nomark & \nomark & \yesmark & \nomark & \nomark \\
+\hline
+\cite{Georgiev2024Predicting} & Demographic, lifestyle, labs, frailty index & \nomark & \yesmark & \yesmark & \nomark & \nomark \\
+\hline
+\cite{Richter2025Cognitive} & Sociodemographic, labs, comorbidities, functional & \nomark & \nomark & \yesmark & \nomark & \nomark \\
+\hline
+\cite{Akter2025Using} & EHR: vitals, comorbidities & \nomark & \nomark & \nomark & \nomark & \nomark \\
+\hline
+\cite{Ren2025Using} & Demographic, lifestyle, blood biomarkers, MMSE & \partialmark & \nomark & \yesmark & \nomark & \nomark \\
+\hline
+\cite{Ye2025Predicting} & Demographic, IADL, social participation & \nomark & \nomark & \nomark & \nomark & \nomark \\
+\hline
+
+\end{longtable}
+\setlength{\tabcolsep}{6pt}
