@@ -329,7 +329,7 @@ Date: 26 \@mtsubmissionmonth{} \@mtsubmissionyear{}\par\clearpage
 
 \newcites{jour,conf}{Journals,Conference}
 \bibliographystylejour{apacite}
-% \bibliographystyleconf{apacite}
+\bibliographystyleconf{apacite}
 \newcounter{lbibcount} 
 \newcommand\ownpubs{%
 %
