@@ -260,13 +260,13 @@ The same process of model fine-tuning and selection was applied to the CIND vs. 
     \end{tabularx}
 \end{table}
 
-To determine the optimal model for this specific classification task, a comprehensive assessment was conducted. This is done by evaluating the five optimized models based on performance, efficiency, and interpretability. From these criteria, the LR model was identified as the most suitable cost-effective choice. Regarding performance, a highly competitive group of models was observed. An F1-score of 0.842 was obtained by the LR model. This score is statistically comparable to the RF (0.844), LightGBM (0.844), and SVM (0.843) models. On the other hand, a low F1-score of 0.814 was observed in the KNN model, so it was excluded from the final selection. Because a very similar performance was achieved by the top four models, the final decision was based on computational efficiency. A high speed in training and prediction was demonstrated by the LR model, with a prediction throughput exceeding 19 million samples per second.  This is much faster than LightGBM, RF, and SVM. Furthermore, high interpretability is ensured by the linear nature of the LR model. This is different from the complex structures of ensemble and non-linear models. Consequently, the LR model was selected; although slightly higher accuracy was offered by RF and SVM, they lacked the balance of efficiency and explainability that are needed for this study. The hyperparameter fine-tuning results of the LR model is presented in Table~\ref{table:lr-fine-tune-task2-apdx} in the appendix.
+To determine the optimal model for this specific classification task, a comprehensive assessment was conducted. This is done by evaluating the five optimized models based on performance, efficiency, and interpretability. From these criteria, the LR model was identified as the most suitable cost-effective choice. Regarding performance, a highly competitive group of models were observed. An F1-score of 0.842 was obtained by the LR model. This score is statistically comparable to the RF (0.844), LightGBM (0.844), and SVM (0.843) models. On the other hand, a low F1-score of 0.814 was observed in the KNN model, so it was excluded from the final selection. Because a very similar performance was achieved by the top four models, the final decision was based on computational efficiency. A high speed in training and prediction was demonstrated by the LR model, with a prediction throughput exceeding 19 million samples per second.  This is much faster than LightGBM, RF, and SVM. Furthermore, high interpretability is ensured by the linear nature of the LR model. This is different from the complex structures of ensemble and non-linear models. Consequently, the LR model was selected; although slightly higher accuracy was offered by RF and SVM, they lacked the balance of efficiency and explainability that are needed for this study. The hyperparameter fine-tuning results of the LR model is presented in Table~\ref{table:lr-fine-tune-task2-apdx} in the appendix.
 
 In conclusion, the model fine-tuning and selection process identified the LR model as the suitable cost-effective model for both the NC vs. CI and CIND vs. dementia classification tasks. By selecting a model that is both highly efficient and easy to interpret while maintaining competitive performance, the study successfully addresses the requirements of the first research objective. Finally, the robustness and generalizability of these selected LR models are further assessed in the next section.
 
 \subsection{Model Performance in External Validation}
 \label{sec:classification_external_validation}
-The generalizability of the selected LR models was assessed for the two current cognitive status classification tasks. This was done by evaluating their performance and clinical utility in the NACC cross-center testing dataset and the independent Alzheimer's Disease Neuroimaging Initiative (\acrshort{ADNI}) dataset. A detailed description of the validation methodology is provided in section \ref{sec:model-validation}.
+The generalizability of the selected LR models were assessed for the two current cognitive status classification tasks. This was done by evaluating their performance and clinical utility in the NACC cross-center testing dataset and the independent Alzheimer's Disease Neuroimaging Initiative (\acrshort{ADNI}) dataset. A detailed description of the validation methodology is provided in section \ref{sec:model-validation}.
 
 \subsubsection{External Validation Results for the NC vs. CI Classification Task}
 The performance of the LR model in internal and external validations for the NC vs. CI classification task was analyzed. A summary of the performance metrics is presented in Table~\ref{table:nc_ci_results}. Additionally, the Receiver Operating Characteristic (\acrshort{ROC}) curves for the three validation stages are illustrated in Figure~\ref{figure:nc_ci_roc}.
@@ -294,9 +294,6 @@ The performance of the LR model in internal and external validations for the NC 
     \centering
     \includegraphics[width=0.7\textwidth]{figures/impaired_classification_all_tests_roc_overlay.png}
     \caption{ROC curves comparing the performance of the logistic regression model for the NC vs. CI classification task}
-    \begin{minipage}{\textwidth}
-      \footnotesize \hl{The horizontal axis shows the false positive rate (1 -- specificity) and the vertical axis shows the true positive rate (sensitivity). Each curve represents one validation dataset.}
-    \end{minipage}
     \label{figure:nc_ci_roc}
 \end{figure}
 
@@ -310,25 +307,19 @@ The prediction of the LR model was calibrated to ensure that it generates probab
     \centering
     \includegraphics[width=1.0\textwidth]{figures/calibration/impaired_classification_both_calibration_curve.png}
     \caption{Model calibration curves for the NC vs. CI classification task}
-    \begin{minipage}{\textwidth}
-      \footnotesize \hl{The horizontal axis shows the predicted probability and the vertical axis shows the observed frequency of the positive class. The diagonal line represents perfect calibration, and the curves compare the model before and after beta calibration.}
-    \end{minipage}
     \label{fig:nc_ci_calib_curve}
 \end{figure}
 
-The calibration of the model prediction supported the clinical utility of the calibrated LR model. According to the Decision Curve Analysis (\acrshort{DCA}) presented in Figure~\ref{fig:nc_ci_dca} the model demonstrated a higher net benefit in probability thresholds ranging from 0.16 to 0.98 in the NACC cross-center validation. This shows that the model has strong clinical utility, outperforming "treat all" and "treat none" strategies for almost any risk cutoff.
+The calibration of the model prediction supported the clinical utility of the calibrated LR model. According to the Decision Curve Analysis (\acrshort{DCA}) presented in Figure~\ref{fig:nc_ci_dca} the model demonstrated a higher net benefit in probability thresholds ranging from 0.16 to 0.98 in the NACC cross-center validation. This shows that the model has strong clinical utility, outperforming ``treat all'' and ``treat none'' strategies for almost any risk cutoff.
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1.0\textwidth]{figures/DCA/impaired_classification_dca_both.png}
-    \caption{The decision curve analysis (DCA) for the NC vs. CI classification task}
-    \begin{minipage}{\textwidth}
-      \footnotesize This figure illustrates the DCA curves of the NACC cross-center validation (left side) and the ADNI external validation (right side). "Treat All" refers to the assumption that all subjects are predicted to have CI, and "Treat None" refers to the assumption that none of the subjects are predicted to have CI.
-    \end{minipage}
+    \caption[The decision curve analysis (DCA) for the NC vs. CI classification task]{The decision curve analysis (DCA) for the NC vs. CI classification task. \hl{The DCA shows the net benefit of the calibrated LR model compared to ``treat all'' and ``treat none'' strategies in both external validation datasets.}}
     \label{fig:nc_ci_dca}
 \end{figure}
 
-The clinical utility of the model was limited to thresholds between 0.35 and 0.99 in the ADNI external validation. The model could not identify low-risk subjects and provided no additional benefit compared to the "treat all" strategy at thresholds below 0.35. This could be related to model miscalibration in low probability thresholds observed in the calibration curve in Figure~\ref{fig:nc_ci_calib_curve}.
+The clinical utility of the model was limited to thresholds between 0.35 and 0.99 in the ADNI external validation. The model could not identify low-risk subjects and provided no additional benefit compared to the ``treat all'' strategy at thresholds below 0.35. This could be related to model miscalibration in low probability thresholds observed in the calibration curve in Figure~\ref{fig:nc_ci_calib_curve}.
 
 \subsubsection{External Validation Results for the CIND vs. Dementia Classification Task}
 The selected LR model for the CIND vs. dementia classification task was also evaluated to check its performance on unseen data. The results of the internal cross-validation, the NACC cross-center validation, and the ADNI external validation are compared in Table~\ref{table:cind_dementia_results}. The ROC curves for these tests are also presented in Figure~\ref{figure:cind_dementia_roc}.
@@ -356,9 +347,6 @@ The selected LR model for the CIND vs. dementia classification task was also eva
     \centering
     \includegraphics[width=0.7\textwidth]{figures/dementia_classification_all_tests_roc_overlay.png}
     \caption{ROC curves comparing the performance of the logistic regression model for the CIND vs. dementia classification task}
-    \begin{minipage}{\textwidth}
-      \footnotesize \hl{The horizontal axis shows the false positive rate (1 -- specificity) and the vertical axis shows the true positive rate (sensitivity). Each curve represents one validation dataset.}
-    \end{minipage}
     \label{figure:cind_dementia_roc}
 \end{figure}
 
@@ -372,23 +360,17 @@ To ensure that the LR model generates probabilities that accurately reflect the 
     \centering
     \includegraphics[width=1.0\textwidth]{figures/calibration/dementia_classification_both_calibration_curve.png}
     \caption{Model calibration curves for the CIND vs. dementia classification task}
-    \begin{minipage}{\textwidth}
-      \footnotesize \hl{The horizontal axis shows the predicted probability and the vertical axis shows the observed frequency of the positive class. The diagonal line represents perfect calibration, and the curves compare the model before and after beta calibration.}
-    \end{minipage}
     \label{fig:cind_dementia_calib_curve}
 \end{figure}
 
 In contrast, different results were found in the ADNI external validation. A significant overestimation of the risk of dementia was observed, which is indicated by a large negative intercept of -1.264. The miscalibration was not corrected even after beta calibration. This could be explained by the fact that the calibration parameters were learned from the NACC UDS data, which could not correct the specific distribution shifts in the ADNI external dataset. As a result, the beta calibration had almost no improvement, with the ECE remaining high at 0.143.
 
-The clinical utility of the LR model to differentiate CIND from dementia was evaluated using DCA as illustrated in Figure~\ref{fig:cind_dementia_dca}. In the NACC cross-center validation, the model had a higher net benefit than the default strategies ("treat all" and "treat none") in a wide range of probability thresholds (0.11 to 0.99). A similar excellent clinical utility was observed in the ADNI external validation, with a net benefit exceeding default strategies, specifically in probability thresholds between 0.12 and 0.89.
+The clinical utility of the LR model to differentiate CIND from dementia was evaluated using DCA as illustrated in Figure~\ref{fig:cind_dementia_dca}. In the NACC cross-center validation, the model had a higher net benefit than the default strategies (``treat all'' and ``treat none'') in a wide range of probability thresholds (0.11 to 0.99). A similar excellent clinical utility was observed in the ADNI external validation, with a net benefit exceeding default strategies, specifically in probability thresholds between 0.12 and 0.89.
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1.0\textwidth]{figures/DCA/dementia_classification_dca_both.png}
-    \caption{The decision curve analysis (DCA) for the CIND vs. dementia classification task}
-    \begin{minipage}{\textwidth}
-      \footnotesize This figure illustrates the DCA curves of the NACC cross-center validation (left side) and the ADNI external validation (right side). "Treat All" refers to the assumption that all subjects are predicted to have dementia, and "Treat None" refers to the assumption that none of the subjects are predicted to have CI.
-    \end{minipage}
+    \caption[The decision curve analysis (DCA) for the CIND vs. dementia classification task]{The decision curve analysis (DCA) for the CIND vs. dementia classification task. \hl{The DCA shows the net benefit of the calibrated LR model compared to ``treat all'' and ``treat none'' strategies in both external validation datasets.}}
     \label{fig:cind_dementia_dca}
 \end{figure}
 
@@ -404,9 +386,6 @@ The global feature importance ranking of this task is provided in Figure~\ref{fi
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/impaired_classification_both_feature_importance_comparison.png}
     \caption{Feature importance in the NACC cross-center validation and the ADNI external validation for the NC vs. CI classification task}
-    \begin{minipage}{\textwidth}
-      \footnotesize \hl{The bars represent the mean absolute SHAP value of each feature, which ranks the contribution of the feature to the model prediction in the two validation datasets.}
-    \end{minipage}
     \label{figure:nc_ci_feature_importance}
 \end{figure}
 
@@ -416,9 +395,6 @@ Regarding the local explanation, the waterfall plots in Figure~\ref{figure:nc_ci
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/impaired_classification_adni_true_positive_waterfall.png}
     \caption{SHAP waterfall plots for two instances correctly classified as cognitive impairment}
-    \begin{minipage}{\textwidth}
-      \footnotesize \hl{The plot shows how the value of each feature shifts the prediction from the base value to the final predicted probability for a single instance.}
-    \end{minipage}
     \label{figure:nc_ci_pos_waterfall}
 \end{figure}
 
@@ -426,11 +402,8 @@ Looking at the correctly classified NC instances in Figure~\ref{figure:nc_ci_neg
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=1.0\textwidth]{figures/XAI/impaired_classification_adni_true_positive_waterfall.png}
+    \includegraphics[width=1.0\textwidth]{figures/XAI/impaired_classification_adni_true_negative_waterfall.png}
     \caption{SHAP waterfall plots for two instances correctly classified as normal cognition}
-    \begin{minipage}{\textwidth}
-      \footnotesize \hl{The plot shows how the value of each feature shifts the prediction from the base value to the final predicted probability for a single instance.}
-    \end{minipage}
     \label{figure:nc_ci_neg_waterfall}
 \end{figure}
 
@@ -450,10 +423,7 @@ The most effective features for risk interventions can be analyzed using the fea
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/impaired_classification_adni_kdtree_dice_global_importance.png}
-    \caption{Feature importance ranking based on counterfactual explanations for the NC vs. CI classification task}
-    \begin{minipage}{\textwidth}
-      \footnotesize The features are ranked based on the percentage of times they were modified to generate valid counterfactual examples. The rank highlights the most critical features for risk intervention. Demographic features (NACCAGE and SEX) show 0\% importance because they were set as invariable features in the counterfactual generation process.
-    \end{minipage}
+    \caption[Feature importance in the counterfactual explanation for the NC vs. CI classification task]{Feature importance in the counterfactual explanation for the NC vs. CI classification task. \hl{The bar chart shows the frequency of changes in each feature to generate counterfactual examples that reverse the model's prediction from cognitive impairment to normal cognition.}}
     \label{figure:nc_ci_dice_feature_importance}
 \end{figure}
 
@@ -464,9 +434,6 @@ The global feature importance ranking for the CIND vs. dementia classification t
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/dementia_classification_both_feature_importance_comparison.png}
     \caption{Feature importance in the NACC cross-center validation and the ADNI external validation for the CIND vs. dementia classification task}
-    \begin{minipage}{\textwidth}
-      \footnotesize \hl{The bars represent the mean absolute SHAP value of each feature, which ranks the contribution of the feature to the model prediction in the two validation datasets.}
-    \end{minipage}
     \label{figure:cind_dementia_feature_importance}
 \end{figure}
 
@@ -476,9 +443,6 @@ To evaluate the local explanation of the model, two correctly classified instanc
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/dementia_classification_adni_true_positive_waterfall.png}
     \caption{SHAP waterfall plots for two instances correctly classified as dementia}
-    \begin{minipage}{\textwidth}
-      \footnotesize \hl{The plot shows how the value of each feature shifts the prediction from the base value to the final predicted probability for a single instance.}
-    \end{minipage}
     \label{figure:cind_dementia_pos_waterfall}
 \end{figure}
 
@@ -488,9 +452,6 @@ The other two randomly selected CIND instances in Figure~\ref{figure:cind_dement
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/dementia_classification_adni_true_negative_waterfall.png}
     \caption{SHAP waterfall plots for two instances correctly classified as cognitive impairment but not dementia (CIND)}
-    \begin{minipage}{\textwidth}
-      \footnotesize \hl{The plot shows how the value of each feature shifts the prediction from the base value to the final predicted probability for a single instance.}
-    \end{minipage}
     \label{figure:cind_dementia_neg_waterfall}
 \end{figure}
 
@@ -510,10 +471,7 @@ The bar chart in Figure~\ref{figure:cind_dementia_dice_feature_importance} prese
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/dementia_classification_adni_kdtree_dice_global_importance.png}
-    \caption{Feature importance ranking based on counterfactual explanations for the CIND vs. dementia classification task}
-    \begin{minipage}{\textwidth}
-      \footnotesize The features are ranked based on the percentage of times they were modified to generate valid counterfactual examples. The rank highlights the most critical features for risk intervention.
-    \end{minipage}
+    \caption[Feature importance in the counterfactual explanation for the CIND vs. dementia classification task]{Feature importance in the counterfactual explanation for the CIND vs. dementia classification task. \hl{The bar chart shows the frequency of changes in each feature to generate counterfactual examples that reverse the model's prediction from dementia to CIND.}}
     \label{figure:cind_dementia_dice_feature_importance}
 \end{figure}
 
@@ -861,9 +819,6 @@ The performance of the LR model to predict the future risk of CI was analyzed ac
     \centering
     \includegraphics[width=0.7\textwidth]{figures/impaired_prediction_all_tests_roc_overlay.png}
     \caption{ROC curves comparing the performance of the logistic regression model for the future NC vs. CI prediction task}
-    \begin{minipage}{\textwidth}
-      \footnotesize \hl{The horizontal axis shows the false positive rate (1 -- specificity) and the vertical axis shows the true positive rate (sensitivity). Each curve represents one validation dataset.}
-    \end{minipage}
     \label{fig:future_nc_ci_roc}
 \end{figure}
 
@@ -877,23 +832,17 @@ Calibration of the LR model was also performed to produce a reliable estimate of
     \centering
     \includegraphics[width=1.0\textwidth]{figures/calibration/impaired_prediction_both_calibration_curve.png}
     \caption{Model calibration curves for the future NC vs. CI prediction task}
-    \begin{minipage}{\textwidth}
-      \footnotesize \hl{The horizontal axis shows the predicted probability and the vertical axis shows the observed frequency of the positive class. The diagonal line represents perfect calibration, and the curves compare the model before and after beta calibration.}
-    \end{minipage}
     \label{fig:future_nc_ci_calib_curve}
 \end{figure}
 
 Similar improvements were observed in the ADNI external validation. Before calibration, the model produced extreme probabilities that did not correctly identify risk levels. The application of beta calibration successfully adjusted the spread of the predictions (slope = 1.269), although it resulted in underestimation of the CI risk in certain thresholds (intercept = 0.395). Overall, the calibration error was significantly reduced, as the ECE decreased from 0.116 to 0.058. This shows that the beta calibration method was able to successfully align the predicted probabilities with the actual results in both external validation datasets.
 
-The excellent calibration of the LR model's predicted probabilities made the model highly valuable for clinical prediction of future CI. According to the DCA shown in Figure~\ref{fig:future_nc_ci_dca}, the model's net benefit exceeded that of the "treat all" and "treat none" strategies across a wide range of probability thresholds, specifically from 0.14 to 0.98 for the NACC cross-center validation and from 0.23 to 0.99 for the ADNI external validation. This result highlights that the LR model can provide clinical value in a wide range of risk threshold probabilities of future CI.
+The excellent calibration of the LR model's predicted probabilities made the model highly valuable for clinical prediction of future CI. According to the DCA shown in Figure~\ref{fig:future_nc_ci_dca}, the model's net benefit exceeded that of the ``treat all'' and ``treat none'' strategies across a wide range of probability thresholds, specifically from 0.14 to 0.98 for the NACC cross-center validation and from 0.23 to 0.99 for the ADNI external validation. This result highlights that the LR model can provide clinical value in a wide range of risk threshold probabilities of future CI.
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1.0\textwidth]{figures/DCA/impaired_prediction_dca_both.png}
-    \caption{The decision curve analysis (DCA) for the future NC vs. CI prediction task}
-    \begin{minipage}{\textwidth}
-      \footnotesize This figure illustrates the DCA curves of the NACC cross-center validation (left side) and the ADNI external validation (right side). "Treat All" refers to the assumption that all subjects are predicted to have CI in five years, and "Treat None" refers to the assumption that none of the subjects are predicted to have CI in five years.
-    \end{minipage}
+    \caption[The decision curve analysis (DCA) for the future NC vs. CI prediction task]{The decision curve analysis (DCA) for the future NC vs. CI prediction task. \hl{The DCA shows the net benefit of the calibrated LR model compared to ``treat all'' and ``treat none'' strategies in both external validation datasets.}}
     \label{fig:future_nc_ci_dca}
 \end{figure}
 
@@ -923,9 +872,6 @@ The selected LR model for the future CIND vs. dementia prediction task was evalu
     \centering
     \includegraphics[width=0.7\textwidth]{figures/dementia_prediction_all_tests_roc_overlay.png}
     \caption{ROC curves comparing the performance of the logistic regression model for the future CIND vs. dementia prediction task}
-    \begin{minipage}{\textwidth}
-      \footnotesize \hl{The horizontal axis shows the false positive rate (1 -- specificity) and the vertical axis shows the true positive rate (sensitivity). Each curve represents one validation dataset.}
-    \end{minipage}
     \label{fig:future_cind_dementia_roc}
 \end{figure}
 
@@ -941,23 +887,17 @@ The selected LR model was calibrated to improve its estimation of future dementi
     \centering
     \includegraphics[width=1.0\textwidth]{figures/calibration/dementia_prediction_both_calibration_curve.png}
     \caption{Model calibration curves for the future CIND vs. dementia prediction task}
-    \begin{minipage}{\textwidth}
-      \footnotesize \hl{The horizontal axis shows the predicted probability and the vertical axis shows the observed frequency of the positive class. The diagonal line represents perfect calibration, and the curves compare the model before and after beta calibration.}
-    \end{minipage}
     \label{fig:future_cind_dementia_calib_curve}
 \end{figure}
 
 The calibration results in the ADNI external validation were undesirable. In this dataset, the uncalibrated model severely overestimated the risk of dementia (intercept = -0.977). beta calibration could not fix the overestimation bias; instead, the ECE increased from 0.143 to 0.169. Applying the internal calibration parameters to the ADNI external data caused a mismatch between the predicted probabilities and the actual risk. The instability of the model predicted probabilities can be observed from the large confidence interval.
 
-An evaluation of the clinical utility of the calibrated LR model was conducted using DCA as presented in Figure~\ref{fig:future_cind_dementia_dca}. The calibration of the model prediction improved the model's net benefit in the NACC cross-center validation, which outperformed the "treat all" and "treat none" strategies for the probability thresholds between 0.20 and 0.99. In contrast, the net benefit of the model was limited between the 0.18 and 0.79 thresholds in the ADNI external validation. Although the model demonstrated better clinical utility than the default strategies in the ADNI external, especially in low and intermediate thresholds, the DCA reflects the miscalibration of the model prediction observed in the calibration curve (intercept = -1.055).
+An evaluation of the clinical utility of the calibrated LR model was conducted using DCA as presented in Figure~\ref{fig:future_cind_dementia_dca}. The calibration of the model prediction improved the model's net benefit in the NACC cross-center validation, which outperformed the ``treat all'' and ``treat none'' strategies for the probability thresholds between 0.20 and 0.99. In contrast, the net benefit of the model was limited between the 0.18 and 0.79 thresholds in the ADNI external validation. Although the model demonstrated better clinical utility than the default strategies in the ADNI external, especially in low and intermediate thresholds, the DCA reflects the miscalibration of the model prediction observed in the calibration curve (intercept = -1.055).
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1.0\textwidth]{figures/DCA/dementia_prediction_dca_both.png}
-    \caption{The decision curve analysis (DCA) for the future CIND vs. dementia prediction task}
-    \begin{minipage}{\textwidth}
-      \footnotesize This figure illustrates the DCA curves of the NACC cross-center validation (left side) and the ADNI external validation (right side). "Treat All" refers to the assumption that all subjects are predicted to have dementia in five years, and "Treat None" refers to the assumption that all subjects are predicted to have CIND in five years.
-    \end{minipage}
+    \caption[The decision curve analysis (DCA) for the future CIND vs. dementia prediction task]{The decision curve analysis (DCA) for the future CIND vs. dementia prediction task. \hl{The DCA shows the net benefit of the calibrated LR model compared to ``treat all'' and ``treat none'' strategies in both external validation datasets.}}
     \label{fig:future_cind_dementia_dca}
 \end{figure}
 
@@ -972,9 +912,6 @@ The features in the future prediction of NC vs. CI are ranked according to their
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/impaired_prediction_both_feature_importance_comparison.png}
     \caption{Feature importance in the NACC cross-center validation and the ADNI external validation for the future NC vs. CI prediction task}
-    \begin{minipage}{\textwidth}
-      \footnotesize \hl{The bars represent the mean absolute SHAP value of each feature, which ranks the contribution of the feature to the model prediction in the two validation datasets.}
-    \end{minipage}
     \label{figure:nc_ci_prediction_feature_importance}
 \end{figure}
 
@@ -984,9 +921,6 @@ Analyzing the local explanation of the selected model is crucial, as subjects wi
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/impaired_prediction_adni_true_positive_waterfall.png}
     \caption{SHAP waterfall plots for two instances correctly predicted as having risk of cognitive impairment within five years in future}
-    \begin{minipage}{\textwidth}
-      \footnotesize \hl{The plot shows how the value of each feature shifts the prediction from the base value to the final predicted probability for a single instance.}
-    \end{minipage}
     \label{figure:nc_ci_prediction_pos_waterfall}
 \end{figure}
 
@@ -996,9 +930,6 @@ A similar analysis was also performed on two instances correctly predicted as NC
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/impaired_prediction_adni_true_negative_waterfall.png}
     \caption{SHAP waterfall plots for two instances correctly predicted as normal cognition within five years in future}
-    \begin{minipage}{\textwidth}
-      \footnotesize \hl{The plot shows how the value of each feature shifts the prediction from the base value to the final predicted probability for a single instance.}
-    \end{minipage}
     \label{figure:nc_ci_prediction_neg_waterfall}
 \end{figure}
 
@@ -1018,10 +949,7 @@ The most critical features that drive these interventions are ranked in Figure~\
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/impaired_prediction_adni_kdtree_dice_global_importance.png}
-    \caption{Feature importance ranking based on counterfactual explanations for the future NC vs. CI prediction task}
-    \begin{minipage}{\textwidth}
-      \footnotesize The features are ranked based on the percentage of times they were modified to generate valid counterfactual examples. The rank highlights the most critical features for risk intervention. Demographic features (NACCAGE and SEX) show 0\% importance because they were set as invariable features in the counterfactual generation process.
-    \end{minipage}
+    \caption[Feature importance in the counterfactual explanation for the future NC vs. CI prediction task]{Feature importance in the counterfactual explanation for the future NC vs. CI prediction task. \hl{The bar chart shows the frequency of changes in each feature to generate counterfactual examples that reverse the model's prediction from cognitive impairment to normal cognition.}}
     \label{figure:nc_ci_prediction_dice_feature_importance}
 \end{figure}
 
@@ -1032,9 +960,6 @@ The global feature importance ranking of this prediction task is demonstrated in
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/dementia_prediction_both_feature_importance_comparison.png}
     \caption{Feature importance in the NACC cross-center validation and the ADNI external validation for the future CIND vs. dementia prediction task}
-    \begin{minipage}{\textwidth}
-      \footnotesize \hl{The bars represent the mean absolute SHAP value of each feature, which ranks the contribution of the feature to the model prediction in the two validation datasets.}
-    \end{minipage}
     \label{figure:cind_dementia_prediction_feature_importance}
 \end{figure}
 
@@ -1044,9 +969,6 @@ The local explanation of the selected LR model for the future prediction of CIND
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/dementia_prediction_adni_true_positive_waterfall.png}
     \caption{SHAP waterfall plots for two instances correctly predicted as having risk of dementia within five years in future}
-    \begin{minipage}{\textwidth}
-      \footnotesize \hl{The plot shows how the value of each feature shifts the prediction from the base value to the final predicted probability for a single instance.}
-    \end{minipage}
     \label{figure:cind_dementia_prediction_pos_waterfall}
 \end{figure}
 
@@ -1057,9 +979,6 @@ Figure~\ref{figure:cind_dementia_prediction_neg_waterfall} shows the waterfall p
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/dementia_prediction_adni_true_negative_waterfall.png}
     \caption{SHAP waterfall plots for two instances correctly predicted as having risk of CIND within five years in future}
-    \begin{minipage}{\textwidth}
-      \footnotesize \hl{The plot shows how the value of each feature shifts the prediction from the base value to the final predicted probability for a single instance.}
-    \end{minipage}
     \label{figure:cind_dementia_prediction_neg_waterfall}
 \end{figure}
 
@@ -1080,10 +999,7 @@ The features that should be prioritized for the prevention of the risk of dement
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/dementia_prediction_adni_random_dice_global_importance.png}
-    \caption{Feature importance ranking based on counterfactual explanations for the future CIND vs. dementia prediction task}
-    \begin{minipage}{\textwidth}
-      \footnotesize The features are ranked based on the percentage of times they were modified to generate valid counterfactual examples. The rank highlights the most critical features for risk intervention.
-    \end{minipage}
+    \caption[Feature importance in the counterfactual explanation for the future CIND vs. dementia prediction task]{Feature importance in the counterfactual explanation for the future CIND vs. dementia prediction task. \hl{The bar chart shows the frequency of changes in each feature to generate counterfactual examples that reverse the model's prediction from dementia to CIND.}}
     \label{figure:cind_dementia_prediction_dice_feature_importance}
 \end{figure}
 
@@ -1262,9 +1178,6 @@ The performance of the model in the NACC cross-center validation was analyzed an
     \centering
     \includegraphics[width=0.7\textwidth]{figures/type_classification_all_tests_roc_overlay.png}
     \caption{ROC curves comparing the performance of the logistic regression model for the AD vs. non-AD classification task}
-    \begin{minipage}{\textwidth}
-      \footnotesize \hl{The horizontal axis shows the false positive rate (1 -- specificity) and the vertical axis shows the true positive rate (sensitivity). Each curve represents one validation dataset.}
-    \end{minipage}
     \label{fig:ad_nonad_roc}
 \end{figure}
 
@@ -1278,9 +1191,6 @@ The selected LR model was calibrated to ensure that the predicted probabilities 
     \centering
     \includegraphics[width=1.0\textwidth]{figures/calibration/type_classification_nacc_test_calibration_curve.png}
     \caption{Model calibration curves of the NACC cross-center validation for the AD vs. non-AD classification task}
-    \begin{minipage}{\textwidth}
-      \footnotesize \hl{The horizontal axis shows the predicted probability and the vertical axis shows the observed frequency of the positive class. The diagonal line represents perfect calibration, and the curves compare the model before and after beta calibration.}
-    \end{minipage}
     \label{fig:ad_nonad_calib_curve}
 \end{figure}
 
@@ -1289,10 +1199,7 @@ The clinical utility of the calibrated LR model for differentiating AD from non-
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1.0\textwidth]{figures/DCA/type_classification_dca_nacc.png}
-    \caption{The decision curve analysis (DCA) of the NACC cross-center validation for the AD vs. non-AD classification task}
-    \begin{minipage}{\textwidth}
-      \footnotesize "Treat All" refers to the assumption that all subjects are classified as AD, and "Treat None" refers to the assumption that all subjects are classified as non-AD.
-    \end{minipage}
+    \caption[The decision curve analysis (DCA) of the NACC cross-center validation for the AD vs. non-AD classification task]{The decision curve analysis (DCA) of the NACC cross-center validation for the AD vs. non-AD classification task. \hl{The DCA shows the net benefit of the calibrated LR model compared to ``treat all'' and ``treat none'' strategies in the NACC cross-center validation dataset.}}
     \label{fig:ad_nonad_dca}
 \end{figure}
 
@@ -1305,9 +1212,6 @@ The bar chart in Figure~\ref{figure:ad_feature_importance} illustrates the globa
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/type_classification_nacc_shap_barchart.png}
     \caption{Feature importance in the NACC cross-center validation and the ADNI external validation for the AD vs. non-AD classification task}
-    \begin{minipage}{\textwidth}
-      \footnotesize \hl{The bars represent the mean absolute SHAP value of each feature, which ranks the contribution of the feature to the model prediction in the two validation datasets.}
-    \end{minipage}
     \label{figure:ad_feature_importance}
 \end{figure}
 
@@ -1317,9 +1221,6 @@ In this task, a local explanation was performed to evaluate how the features con
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/type_classification_nacc_true_positive_waterfall.png}
     \caption{SHAP waterfall plots for two instances correctly classified as Alzheimer's disease}
-    \begin{minipage}{\textwidth}
-      \footnotesize \hl{The plot shows how the value of each feature shifts the prediction from the base value to the final predicted probability for a single instance.}
-    \end{minipage}
     \label{figure:ad_pos_waterfall}
 \end{figure}
 
@@ -1330,9 +1231,6 @@ A similar analysis was performed with two non-AD instances in Figure~\ref{figure
     \centering
     \includegraphics[width=1.0\textwidth]{figures/XAI/type_classification_nacc_true_negative_waterfall.png}
     \caption{SHAP waterfall plots for two instances correctly classified as non Alzheimer's disease}
-    \begin{minipage}{\textwidth}
-      \footnotesize \hl{The plot shows how the value of each feature shifts the prediction from the base value to the final predicted probability for a single instance.}
-    \end{minipage}
     \label{figure:ad_neg_waterfall}
 \end{figure}
 
