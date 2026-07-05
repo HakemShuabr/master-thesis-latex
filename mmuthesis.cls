@@ -80,8 +80,8 @@
 \DeclareCaptionFormat{algorithm}{\vspace{0ex}{%
    \parbox[c][1.75em][c]{\textwidth}{#1#2\hspace{1em}#3}}\par}
 \captionsetup[algorithm]{format=algorithm}
-\captionsetup[figure]{font=bf}
-\captionsetup[table]{font=bf,position=top}
+\captionsetup[figure]{font=bf,justification=centering,singlelinecheck=false}
+\captionsetup[table]{font=bf,position=top,justification=centering,singlelinecheck=false}
 
 \AtBeginEnvironment{algorithmic}{\setstretch{1.5}}
 
