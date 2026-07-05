@@ -5,29 +5,29 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
-\usepackage{caption} % needed to support multiple subfigure floating in multiple pages. Used in the appendix
-\usepackage{pdflscape}
-\usepackage{longtable}
-\usepackage{adjustbox}
-\usepackage{lscape}
 \usepackage{enumitem}
 
-\usepackage{soul}
-\sethlcolor{yellow}
-\usepackage{pifont}
-\newcommand{\yesmark}{\ding{52}}
-\newcommand{\nomark}{\ding{56}}
-\newcommand{\partialmark}{\rule[0.4ex]{1.4ex}{1.4pt}}
-\newcommand{\rh}[1]{\rotatebox[origin=c]{90}{\hspace{4pt}\textbf{#1}\hspace{4pt}}}
 %To remove spacing before itemize starts
 %the 'leftmargin=2cm' option is to match the itemize indentation in MS Word
 %can be removed/edit accordingly
 \setlist[itemize]{topsep=-1cm,leftmargin=2cm}
 
-% Packages added by myself
-\usepackage{multirow}
+% Packages and commands added by myself
+\usepackage{caption} % needed to support multiple subfigure floating in multiple pages. Used in the appendix
+\usepackage{pdflscape}
 \usepackage{longtable}
+\usepackage{adjustbox}
+\usepackage{lscape}
+\usepackage{multirow}
 \usepackage{makecell}
+\usepackage{soul}
+\sethlcolor{yellow}
+\usepackage{pifont}
+\newcommand{\yesmark}{\ding{52}} % to create a tick mark
+\newcommand{\nomark}{\ding{56}} % to create a cross mark
+\newcommand{\partialmark}{\rule[0.4ex]{1.4ex}{1.4pt}} % to create a square for partial mark
+\newcommand{\rh}[1]{\rotatebox[origin=c]{90}{\hspace{4pt}\textbf{#1}\hspace{4pt}}} % to rotate table header text
+\newcommand{\twenty}[1]{} % to fix sorting in bibliography
 
 %To fix cell size and alignment at the same time
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
@@ -60,9 +60,6 @@ breaklines=true,breakatwhitespace=true}
 
 % load acronym definitions from a separate file
 \loadglsentries{acronyms}
-
-% Command to fix sorting in bibliography
-\newcommand{\twenty}[1]{}
 
 \begin{document}
 
