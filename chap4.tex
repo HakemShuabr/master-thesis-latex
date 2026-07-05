@@ -972,7 +972,6 @@ The local explanation of the selected LR model for the future prediction of CIND
     \label{figure:cind_dementia_prediction_pos_waterfall}
 \end{figure}
 
-\newpage
 Figure~\ref{figure:cind_dementia_prediction_neg_waterfall} shows the waterfall plots of two instances correctly predicted as CIND. \textit{Instance B} had a predicted probability of dementia lower than the classification threshold (43\% < 50\%). The low risk of dementia in this case was due to the ability to normally perform critical functional activities (REMDATES, TRAVEL, and EVENTS) and the absence of memory problems. This profile was quite different from Instance A, which had a similar predicted probability (44\%) despite difficulty traveling alone and reported memory problems. This is because executive functions related to financial management (BILLS, TAXES) were preserved as normal in Instance A.
 
 \begin{figure}[ht]
@@ -982,7 +981,6 @@ Figure~\ref{figure:cind_dementia_prediction_neg_waterfall} shows the waterfall p
     \label{figure:cind_dementia_prediction_neg_waterfall}
 \end{figure}
 
-\newpage
 For counterfactual explanation, using DiCE with the \acrshort{KD-Tree} (K-dimensional tree) search method failed to generate counterfactual examples for half of the ADNI samples. This is because of the limited size and sparsity of the training data in this task, which leaves large gaps between the data points in the KD-Tree structure. As a result, the algorithm was unable to find enough similar instances to construct valid counterfactuals. To overcome this challenge, DiCE with random search was utilized in this task. Random search is not affected by the sparsity of the training data because it generates new synthetic examples by exploring the range of possible feature values to obtain the required outcome.
 
 The DiCE random search method managed to generate counterfactual explanations for risk prevention for only 86.8\% of the ADNI external data instances. This rate is lower than the rates of the other classification and prediction tasks. However, DiCE in this task was able to provide up to five different counterfactual examples for around 72\% of the instances, significantly exceeding the results of the NC vs. CI prediction task. The results of the counterfactual explanation for the future prediction of CIND vs. dementia are presented in Figure~\ref{figure:cind_dementia_prediction_dice_stat}. Analysis of feature changes indicates that the effort required to prevent the risk of dementia is low, with a median of two feature changes. In fact, more than half of the generated counterfactuals (52.8\%) required modifying only one or two risk factors (features). The counterfactual explanation results of the NACC cross-center validation, which are presented in Figure~\ref{figure:dice-nacc-task4-apdx} in the Appendix, showed a similar pattern with a higher percentage of instances without counterfactual examples.
@@ -1025,7 +1023,6 @@ The evaluation of the feature selection method was applied to this classificatio
 
 The results confirm the high difficulty of this task, with lower G-mean scores in all methods compared to the scores obtained in the cognitive status classification and prediction tasks. The complexity can be noticed from the high F1 class overlap scores. The baseline achieved the highest G-mean (0.730) but the lowest fitness score (0.608) because it used all 77 features. The proposed method was the most successful in reducing complexity and improving efficiency by selecting only eight features. This subset achieved the lowest F1 class overlap score (0.931) and had a model training speed that was 2.5 times faster than the baseline.
 
-\newpage
 The Boruta method obtained the highest fitness score of 0.723 by selecting 12 features and producing an RF model with a G-mean of 0.699. This resulted in a higher G-mean score than the proposed method (0.668). Given this finding, a supplementary analysis was carried out to assess the robustness of these feature sets. The performance of the three feature sets was evaluated using two other common classifiers: LR and SVM. The G-mean scores of the three models are presented in Table~\ref{table:fs-task5-more-models}.
 
 \begin{table}[!ht]
@@ -1224,7 +1221,6 @@ In this task, a local explanation was performed to evaluate how the features con
     \label{figure:ad_pos_waterfall}
 \end{figure}
 
-\newpage
 A similar analysis was performed with two non-AD instances in Figure~\ref{figure:ad_neg_waterfall}. \textit{Instance A} represents a scenario where the AD indicator of 86 years of age was successfully reversed by preserving key cognitive functions, specifically normal orientation and only questionable memory impairment. \textit{Instance B} presented a different profile. It was classified as non-AD regardless of mild memory impairment. This is due to the questionable ability of personal care despite a relatively younger age. As a side note, it can be observed that features with low global importance have minimal to no influence on the model outcome in the four individually explained instances.
 
 \begin{figure}[ht]

@@ -29,6 +29,8 @@
 \newcommand{\rh}[1]{\rotatebox[origin=c]{90}{\hspace{4pt}\textbf{#1}\hspace{4pt}}} % to rotate table header text
 \newcommand{\twenty}[1]{} % to fix sorting in bibliography
 \renewcommand{\hl}[1]{#1} % to turn off the text highlight by \hl command 
+\widowpenalty=10000 % to avoid widow lines in the thesis. Widow lines are the last line of a paragraph that appears alone at the top of a page.
+\clubpenalty=10000 % to avoid club lines in the thesis. Club lines are the first line of a paragraph that appears alone at the bottom of a page.
 
 %To fix cell size and alignment at the same time
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
