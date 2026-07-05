@@ -29,8 +29,8 @@
 \setheadfoot{\baselineskip}{25mm}
 \addtolength\footskip{-6pt}
 \pagestyle{plain}
-\makeevenfoot{plain}{}{\fontsize{10pt}{12pt}\selectfont\thepage}{}
-\makeoddfoot{plain}{}{\fontsize{10pt}{12pt}\selectfont\thepage}{}
+\makeevenfoot{plain}{}{\fontsize{12pt}{14pt}\selectfont\thepage}{}
+\makeoddfoot{plain}{}{\fontsize{12pt}{14pt}\selectfont\thepage}{}
 \checkandfixthelayout
 
 %%%%%%%%%%%%
