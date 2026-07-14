@@ -172,7 +172,7 @@ I hereby declare that the work has been done by myself and no portion of the wor
 1141327949\\
 \@mtfaculty \\
 Multimedia University\\
-Date: 26 \@mtsubmissionmonth{} \@mtsubmissionyear{}\par\clearpage
+Date: 13 July 2026\par\clearpage
 }
 
 %%%%%%%%%%%%
@@ -374,4 +374,4 @@ Date: 26 \@mtsubmissionmonth{} \@mtsubmissionyear{}\par\clearpage
 \setlength{\textfloatsep}{2\onelineskip}
 \setlength{\floatsep}{2\onelineskip}
 
-\AtEndDocument{\clearpage\hspace{1em}\thispagestyle{empty}\clearpage}
+%\AtEndDocument{\clearpage\hspace{1em}\thispagestyle{empty}\clearpage} % removed: unwanted blank page at the end of the thesis
